@@ -18,8 +18,13 @@ public class GameConfig : ScriptableObject
 
     [Header("Level management")]
     [SerializeField]
+    private LevelConfig firstLevel;
+
+    public LevelConfig FirstLevel { get { return firstLevel; } }
+
+    [SerializeField]
     private LevelConfig currentLevel;
-    public LevelConfig CurrentLevel { get { return currentLevel; } }
+    public LevelConfig CurrentLevel { get { return currentLevel; } set { currentLevel = value; } }
 
 
     [Header("Prefabs")]
@@ -40,5 +45,21 @@ public class GameConfig : ScriptableObject
     [SerializeField]
     private Transform containerPrefab;
     public Transform ContainerPrefab { get { return containerPrefab; } }
+
+    [SerializeField]
+    private Weapon weaponPrefab;
+    public Weapon WeaponPrefab { get { return weaponPrefab; } }
+
+    [SerializeField]
+    private Projectile projectilePrefab;
+    public Projectile ProjectilePrefab { get { return projectilePrefab; } }
+
+    [SerializeField]
+    private UIInventoryItem uiInventoryItemPrefab;
+    public UIInventoryItem UIInventoryItemPrefab { get { return uiInventoryItemPrefab; } }
+
+    [SerializeField]
+    private UIShopItem uiShopItemPrefab;
+    public UIShopItem UIShopItemPrefab { get { return uiShopItemPrefab; } }
 
 }

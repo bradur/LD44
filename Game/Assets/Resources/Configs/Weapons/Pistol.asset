@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d916ebef3609c4999b939a8f415f2a, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: 
+  previewPicture: {fileID: -6110656803992641779, guid: ecc769bd5d74b38488895fd80fbd990c,
+    type: 3}
+  configName: Pistol
+  keyCode: 49
+  basePrice: 50
+  fireInterval: 0.5
+  projectile: {fileID: 11400000, guid: ddeaf01316a233942babcd9ecf1df0d9, type: 2}

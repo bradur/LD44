@@ -16,16 +16,12 @@ public class TiledMap : MonoBehaviour
     [SerializeField]
     private Cinemachine.CinemachineVirtualCamera playerCamera;
 
-    private void Start()
+    public void Initialize()
     {
         gameConfig = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
         // Load all GridObjectConfigs from the folder
         XDocument mapX = XDocument.Parse(gameConfig.CurrentLevel.LevelFile.ToString());
         TmxMap map = new TmxMap(mapX);
-        Initialize(map);
-    }
-    public void Initialize(TmxMap map)
-    {
         DrawLayers(map);
         SpawnObjects(map);
     }
@@ -99,7 +95,9 @@ public class TiledMap : MonoBehaviour
         ObjectConfig objectConfig = ConfigManager.main.GetObjectConfig(tmxObject.Name);
         GameObject gameObject = Instantiate(objectConfig.Prefab);
         if (gameObject.tag == "Player") {
-            playerCamera.Follow = gameObject.transform;
+            PlayerCharacter player = gameObject.GetComponent<PlayerCharacter>();
+            playerCamera.Follow = player.transform;
+            player.Init();
         }
         gameObject.transform.position = new Vector2(x, y);
     }
