@@ -13,3 +13,12 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   playerSpeed: 3
+  currentLevel: {fileID: 11400000, guid: b5f1f54158806394c84614b379927c05, type: 2}
+  combinedMeshLayerPrefab: {fileID: 459960344081365651, guid: db0e4a711e70ff448a5be17ced688bc0,
+    type: 3}
+  meshTileMapPrefab: {fileID: 2070614462903574203, guid: 6d66a867e96d97e42bf64a7284c9bc93,
+    type: 3}
+  wallPrefab: {fileID: 2858998943103669039, guid: 7aacf1f31a841cb4a9ed2ed5c822b5e1,
+    type: 3}
+  containerPrefab: {fileID: 2662445577036136020, guid: aa5a57b87d6cc4b4a89d53bd60d4bb29,
+    type: 3}

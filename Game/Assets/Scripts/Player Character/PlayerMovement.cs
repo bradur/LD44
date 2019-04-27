@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = (-transform.up * velocity.y) + (Vector3.right * velocity.x);
+        rb.velocity = (-transform.up * velocity.y) + (transform.right * velocity.x);
     }
 
     private void LateUpdate() {

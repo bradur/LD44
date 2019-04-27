@@ -29,4 +29,14 @@ public class ConfigManager : MonoBehaviour {
         }
         return null;
     }
+
+    public ObjectConfig GetObjectConfig(string configName) {
+        configName += "Object";
+        foreach (Object config in configs) {
+            if (config.name == configName) {
+                return config as ObjectConfig;
+            }
+        }
+        return null;
+    }
 }

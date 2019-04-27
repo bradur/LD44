@@ -33,6 +33,9 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField]
     private RotateSmoothlyTowardsDirection rotator;
 
+    [SerializeField]
+    private Animator animator;
+
     private Vector2 velocity;
 
     void Start()
@@ -70,13 +73,15 @@ public class FollowPlayer : MonoBehaviour
 
     private void StartFollowing()
     {
-        isFollowing = true;
         moveAround.Reset();
         moveAround.enabled = false;
+        isFollowing = true;
+        animator.SetBool("Walking", true);
     }
 
     private void StopFollowing()
     {
+        animator.SetBool("Walking", false);
         moveAround.enabled = true;
         isFollowing = false;
     }
@@ -100,7 +105,6 @@ public class FollowPlayer : MonoBehaviour
             rayMask
         ))
         {
-            Debug.Log(hit.collider);
             return hit.collider.gameObject.tag == "Player";
         }
         return false;
