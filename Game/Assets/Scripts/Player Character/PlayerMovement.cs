@@ -8,8 +8,6 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
 
-    float speed = 1;
-
     [SerializeField]
     private Rigidbody rb;
 
@@ -18,15 +16,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    void Start() {
+        Init();
+    }
+
+    GameConfig config;
+    PlayerPosition playerPosition;
+    void Init() {
+        config = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
+        playerPosition = ConfigManager.main.GetConfig("PlayerPosition") as PlayerPosition;
+    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            velocity.y = speed;
+            velocity.y = config.PlayerSpeed;
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            velocity.y = -speed;
+            velocity.y = -config.PlayerSpeed;
         }
         else
         {
@@ -34,11 +43,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            velocity.x = speed;
+            velocity.x = config.PlayerSpeed;
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            velocity.x = -speed;
+            velocity.x = -config.PlayerSpeed;
         }
         else
         {
@@ -50,5 +59,9 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = (-transform.up * velocity.y) + (Vector3.right * velocity.x);
+    }
+
+    private void LateUpdate() {
+        playerPosition.playerPosition = transform.position;
     }
 }
