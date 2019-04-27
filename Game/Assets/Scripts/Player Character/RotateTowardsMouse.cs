@@ -9,6 +9,9 @@ public class RotateTowardsMouse : MonoBehaviour {
 
     float preAngle = 90;
 
+    [SerializeField]
+    float minMagnitude = 25f;
+
     void Start () {
         
     }
@@ -17,7 +20,9 @@ public class RotateTowardsMouse : MonoBehaviour {
         Vector2 mousePosition = Input.mousePosition;
         Vector2 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
         Vector2 offset = new Vector2(mousePosition.x - screenPoint.x, mousePosition.y - screenPoint.y);
-        float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle + preAngle);
+        if (offset.magnitude > minMagnitude) {
+            float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle + preAngle);
+        }
     }
 }
