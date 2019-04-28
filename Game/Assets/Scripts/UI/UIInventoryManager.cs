@@ -74,8 +74,36 @@ public class UIInventoryManager : MonoBehaviour
         items.Clear();
     }
 
+    public InventoryItem SelectNextItem() {
+        int index = items.IndexOf(selectedItem);
+        if (items.Count > index + 1) {
+            SelectUIItem(items[index + 1]);
+            return items[index + 1].Item;
+        } else if (index > 0) {
+            SelectUIItem(items[0]);
+            return items[0].Item;
+        }
+        return null;
+    }
+
+    public InventoryItem SelectPreviousItem() {
+        int index = items.IndexOf(selectedItem);
+        if (index > 0) {
+            SelectUIItem(items[index - 1]);
+            return items[index - 1].Item;
+        } else if (items.Count > index + 1) {
+            SelectUIItem(items[items.Count - 1]);
+            return items[items.Count - 1].Item;
+        }
+        return null;
+    }
+
     public void SelectUIItem(UIInventoryItem item)
     {
+        if (selectedItem != null)
+        {
+            selectedItem.SetParent(inventoryItemParent);
+        }
         item.SetParent(currentItemParent);
         selectedItem = item;
     }
@@ -87,10 +115,6 @@ public class UIInventoryManager : MonoBehaviour
         {
             if (uiItem.Equals(item))
             {
-                if (selectedItem != null)
-                {
-                    selectedItem.SetParent(inventoryItemParent);
-                }
                 SelectUIItem(uiItem);
             }
         }

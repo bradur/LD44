@@ -6,7 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class UIInventoryItem : MonoBehaviour {
+public class UIInventoryItem : MonoBehaviour
+{
 
     [SerializeField]
     private Text txtName;
@@ -25,15 +26,20 @@ public class UIInventoryItem : MonoBehaviour {
     private GameObject ammoContainer;
 
     private InventoryItem inventoryItem;
+    public InventoryItem Item { get { return inventoryItem; } }
 
     private RectTransform rectTransform;
 
-    public void Init(InventoryItem item) {
+    public void Init(InventoryItem item)
+    {
         inventoryItem = item;
-        if (!item.UnlimitedAmmo) {
+        if (!item.UnlimitedAmmo)
+        {
             SetAmmo(item.Ammo);
             imgAmmoIcon.sprite = item.WeaponConfig.Projectile.PreviewPicture;
-        } else {
+        }
+        else
+        {
             txtAmmoCount.text = "";
             imgAmmoIcon.enabled = false;
             ammoContainer.SetActive(false);
@@ -44,56 +50,72 @@ public class UIInventoryItem : MonoBehaviour {
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public int GetSelectOrder () {
+    public int GetSelectOrder()
+    {
         return inventoryItem.SelectOrder;
     }
 
-    private string GetNiceKeycode(KeyCode keyCode) {
-        if (keyCode == KeyCode.Alpha0) {
+    private string GetNiceKeycode(KeyCode keyCode)
+    {
+        if (keyCode == KeyCode.Alpha0)
+        {
             return "0";
         }
-        if (keyCode == KeyCode.Alpha1) {
+        if (keyCode == KeyCode.Alpha1)
+        {
             return "1";
         }
-        if (keyCode == KeyCode.Alpha2) {
+        if (keyCode == KeyCode.Alpha2)
+        {
             return "2";
         }
-        if (keyCode == KeyCode.Alpha3) {
+        if (keyCode == KeyCode.Alpha3)
+        {
             return "3";
         }
-        if (keyCode == KeyCode.Alpha4) {
+        if (keyCode == KeyCode.Alpha4)
+        {
             return "4";
         }
-        if (keyCode == KeyCode.Alpha5) {
+        if (keyCode == KeyCode.Alpha5)
+        {
             return "5";
         }
-        if (keyCode == KeyCode.Alpha6) {
+        if (keyCode == KeyCode.Alpha6)
+        {
             return "6";
         }
-        if (keyCode == KeyCode.Alpha7) {
+        if (keyCode == KeyCode.Alpha7)
+        {
             return "7";
         }
-        if (keyCode == KeyCode.Alpha8) {
+        if (keyCode == KeyCode.Alpha8)
+        {
             return "8";
         }
-        if (keyCode == KeyCode.Alpha9) {
+        if (keyCode == KeyCode.Alpha9)
+        {
             return "9";
         }
         return keyCode.ToString();
     }
 
-    public bool Equals(InventoryItem item) {
+    public bool Equals(InventoryItem item)
+    {
         return inventoryItem == item;
     }
 
-    public void SetParent(RectTransform rt) {
+    public void SetParent(RectTransform rt)
+    {
         rectTransform.SetParent(rt, false);
         /*rectTransform.pivot = new Vector2(0f, 0f);
         rectTransform.anchoredPosition = new Vector2(0, 0);*/
         rectTransform.localPosition = Vector2.zero;
     }
-    public void SetAmmo(int ammo) {
-        if (!inventoryItem.UnlimitedAmmo) {
+    public void SetAmmo(int ammo)
+    {
+        if (!inventoryItem.UnlimitedAmmo)
+        {
             txtAmmoCount.text = ammo.ToString();
         }
     }

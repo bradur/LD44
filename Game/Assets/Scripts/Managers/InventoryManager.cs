@@ -112,8 +112,32 @@ public class InventoryManager : MonoBehaviour {
         UIShop.main.gameObject.SetActive(true);
     }
 
+    void SelectNextItem() {
+        InventoryItem item = UIInventoryManager.main.SelectNextItem();
+        if (item != null) {
+            config.SelectItem(item);
+        }
+    }
+
+    void SelectPreviousItem() {
+        InventoryItem item = UIInventoryManager.main.SelectPreviousItem();
+        if (item != null) {
+            config.SelectItem(item);
+        }
+    }
+
     public void EnableNextLevelButton() {
 
+    }
+
+    void Update () {
+        if (GameManager.main.InGame()) {
+            if (Input.mouseScrollDelta.y > 0.05f) {
+                SelectNextItem();
+            } else if (Input.mouseScrollDelta.y < -0.05f) {
+                SelectPreviousItem();
+            }
+        }
     }
 
 }
