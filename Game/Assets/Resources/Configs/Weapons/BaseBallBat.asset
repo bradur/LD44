@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00d916ebef3609c4999b939a8f415f2a, type: 3}
-  m_Name: Pistol
+  m_Name: BaseBallBat
   m_EditorClassIdentifier: 
-  previewPicture: {fileID: -6110656803992641779, guid: ecc769bd5d74b38488895fd80fbd990c,
+  previewPicture: {fileID: 3386662938922423588, guid: ecc769bd5d74b38488895fd80fbd990c,
     type: 3}
-  configName: Pistol
-  keyCode: 50
-  basePrice: 50
-  fireInterval: 0.5
-  projectile: {fileID: 11400000, guid: ddeaf01316a233942babcd9ecf1df0d9, type: 2}
+  configName: Baseball bat
+  keyCode: 49
+  basePrice: 5
+  fireInterval: 0.3
+  projectile: {fileID: 11400000, guid: 09a5f5038f3c8e446858d28df132174d, type: 2}

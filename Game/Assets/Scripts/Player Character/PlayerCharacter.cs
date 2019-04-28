@@ -28,10 +28,10 @@ public class PlayerCharacter : MonoBehaviour
     public void Shoot()
     {
         InventoryItem item = InventoryManager.main.GetCurrentItem();
-        if (item.Ammo > 0)
+        if (item.Ammo > 0 || item.UnlimitedAmmo)
         {
             if (item.Weapon) {
-                item.Weapon.Shoot(-transform.up, transform.position - (transform.up * 0.2f) );
+                item.Weapon.Shoot(-transform.up, transform.position - (transform.up * 0.2f), transform);
                 item.Ammo -= 1;
                 UIInventoryManager.main.UpdateAmmo(item);
             }

@@ -33,16 +33,25 @@ public class Weapon : MonoBehaviour
     }
 
 
-    public void Shoot(Vector2 direction, Vector2 position)
+    public void Shoot(Vector2 direction, Vector2 position, Transform origin)
     {
-        projectile = Instantiate(gameConfig.ProjectilePrefab);
-        projectile.Init(config.Projectile, direction, position);
+        if (config.Projectile.ProjectilePrefab != null) {
+            projectile = Instantiate(config.Projectile.ProjectilePrefab);
+        } else {
+            projectile = Instantiate(gameConfig.ProjectilePrefab);
+        }
+        projectile.Init(config.Projectile, direction, position, origin);
     }
 
-    public void ShootAsEnemy(Vector2 direction, Vector2 position)
+    public void ShootAsEnemy(Vector2 direction, Vector2 position, Transform origin)
     {
-        projectile = Instantiate(gameConfig.EnemyProjectilePrefab);
-        projectile.Init(config.Projectile, direction, position);
+        if (config.Projectile.ProjectilePrefab != null) {
+            projectile = Instantiate(config.Projectile.ProjectilePrefab);
+        } else {
+            projectile = Instantiate(gameConfig.ProjectilePrefab);
+        }
+        projectile.gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
+        projectile.Init(config.Projectile, direction, position, origin);
     }
 
     void Select()

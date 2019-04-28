@@ -38,6 +38,9 @@ TextureImporter:
   - first:
       213: 6155212226941906339
     second: sprites_9
+  - first:
+      213: -7347884226184020333
+    second: baseBallBatRealWorld
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -307,7 +310,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -328,7 +331,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -349,7 +352,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -370,7 +373,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -378,6 +381,27 @@ TextureImporter:
       bones: []
       spriteID: d3f21b3a770aa794a8b6e468543862f0
       internalID: 6155212226941906339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: baseBallBatRealWorld
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 448
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.221129, y: 0.22342205}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1b7a50d08d109e46a33d2f423567a2f
+      internalID: -7347884226184020333
       vertices: []
       indices: 
       edges: []

@@ -595,7 +595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.23, y: 0}
+  m_AnchoredPosition: {x: 0.22999954, y: 0}
   m_SizeDelta: {x: 19.39, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8378408493945166938
@@ -721,6 +721,7 @@ MonoBehaviour:
   txtName: {fileID: 3189819592272334612}
   txtAmmoCount: {fileID: 8170755498684070233}
   imgIcon: {fileID: 5067208123313070949}
+  imgAmmoIcon: {fileID: 8170755498411358830}
   buyAmmoButton: {fileID: 8170755497323717884}
   buyButton: {fileID: 8170755497742586366}
   buyButtonContainer: {fileID: 3376914352369050706}

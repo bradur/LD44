@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b2e9414d38b474dbfd60595cb2c08e, type: 3}
+  m_Name: BatSwing
+  m_EditorClassIdentifier: 
+  previewPicture: {fileID: 3386662938922423588, guid: ecc769bd5d74b38488895fd80fbd990c,
+    type: 3}
+  realWorldSprite: {fileID: -7347884226184020333, guid: ecc769bd5d74b38488895fd80fbd990c,
+    type: 3}
+  projectilePrefab: {fileID: 512775331847541310, guid: da2a022f8ecbbb24d851de4f0b5a4b84,
+    type: 3}
+  basePrice: 0
+  melee: 1
+  configName: BatSwing
+  damage: 1
+  speed: 0
+  lifeTime: 0.3

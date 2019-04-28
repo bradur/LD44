@@ -11,8 +11,21 @@ public class ProjectileConfig : ScriptableObject
     public Sprite PreviewPicture { get { return previewPicture; } }
 
     [SerializeField]
+    private Sprite realWorldSprite;
+    public Sprite RealWorldSprite { get { return realWorldSprite; } }
+
+    [SerializeField]
+    private Projectile projectilePrefab;
+
+    public Projectile ProjectilePrefab { get { return projectilePrefab; } }
+
+    [SerializeField]
     private int basePrice;
     public int BasePrice { get { return basePrice; } }
+
+    [SerializeField]
+    private bool melee = false;
+    public bool Melee { get { return melee; } }
 
     [SerializeField]
     private string configName;

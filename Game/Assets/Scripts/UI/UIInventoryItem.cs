@@ -18,17 +18,26 @@ public class UIInventoryItem : MonoBehaviour {
     [SerializeField]
     private Image imgIcon;
 
+    [SerializeField]
+    private Image imgAmmoIcon;
+
     private InventoryItem inventoryItem;
 
     private RectTransform rectTransform;
 
     public void Init(InventoryItem item) {
         inventoryItem = item;
-        txtName.text = item.WeaponConfig.Name;
+        if (!item.UnlimitedAmmo) {
+            SetAmmo(item.Ammo);
+            imgAmmoIcon.sprite = item.WeaponConfig.Projectile.PreviewPicture;
+        } else {
+            txtAmmoCount.text = "";
+            imgAmmoIcon.enabled = false;
+        }
         imgIcon.sprite = item.WeaponConfig.PreviewPicture;
+        txtName.text = item.WeaponConfig.Name;
         txtKey.text = GetNiceKeycode(item.WeaponConfig.KeyCode);
         rectTransform = GetComponent<RectTransform>();
-        SetAmmo(item.Ammo);
     }
 
     private string GetNiceKeycode(KeyCode keyCode) {

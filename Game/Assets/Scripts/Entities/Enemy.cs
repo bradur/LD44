@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void Shoot(Vector2 direction, Vector2 position) {
-        weapon.ShootAsEnemy(direction, position);
+        weapon.ShootAsEnemy(direction, position, transform);
     }
 
     public void TakeDamage(int damage) {

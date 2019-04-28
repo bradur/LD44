@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 3
   firstLevel: {fileID: 11400000, guid: b5f1f54158806394c84614b379927c05, type: 2}
-  currentLevel: {fileID: 0}
+  currentLevel: {fileID: 11400000, guid: b5f1f54158806394c84614b379927c05, type: 2}
+  enemyProjectileLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   combinedMeshLayerPrefab: {fileID: 459960344081365651, guid: db0e4a711e70ff448a5be17ced688bc0,
     type: 3}
   meshTileMapPrefab: {fileID: 2070614462903574203, guid: 6d66a867e96d97e42bf64a7284c9bc93,
@@ -26,8 +29,6 @@ MonoBehaviour:
   weaponPrefab: {fileID: 5208139212514456948, guid: c027cc080aed75a45935d536c34e3f85,
     type: 3}
   projectilePrefab: {fileID: 512775331847541310, guid: 42421472b80e833448ff62d9ee492c3f,
-    type: 3}
-  enemyProjectilePrefab: {fileID: 512775331847541310, guid: ebbe902bf3c0c274e8fa1ca93deefb12,
     type: 3}
   uiInventoryItemPrefab: {fileID: 5000330569584828310, guid: c21ea771515c2a54989e91c8815e9e10,
     type: 3}

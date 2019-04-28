@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previewPicture: {fileID: 8553092956536608252, guid: ecc769bd5d74b38488895fd80fbd990c,
     type: 3}
+  realWorldSprite: {fileID: 21300000, guid: 52062b19f3f26064bbb7a6abedc42989, type: 3}
+  projectilePrefab: {fileID: 0}
   basePrice: 1
+  melee: 0
   configName: 9mm rounds
-  damage: 1
+  damage: 5
   speed: 10
+  lifeTime: 5

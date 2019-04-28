@@ -18,6 +18,9 @@ public class UIShopItem : MonoBehaviour {
     [SerializeField]
     private Image imgIcon;
 
+    [SerializeField]
+    private Image imgAmmoIcon;
+
     private InventoryItem inventoryItem;
 
     private RectTransform rectTransform;
@@ -35,10 +38,17 @@ public class UIShopItem : MonoBehaviour {
         txtName.text = item.WeaponConfig.Name;
         imgIcon.sprite = item.WeaponConfig.PreviewPicture;
         rectTransform = GetComponent<RectTransform>();
-        SetAmmo(item.Ammo);
-        buyAmmoButton.Init(this, item);
-        inventoryItem = item;
+        if (!item.UnlimitedAmmo) {
+            imgAmmoIcon.sprite = item.WeaponConfig.Projectile.PreviewPicture;
+            SetAmmo(item.Ammo);
+            buyAmmoButton.Init(this, item);
+        } else {
+            imgAmmoIcon.enabled = false;
+            buyAmmoButton.gameObject.SetActive(false);
+            txtAmmoCount.text = "";
+        }
         buyButton.Init(this, item);
+        inventoryItem = item;
     }
 
 
@@ -56,7 +66,9 @@ public class UIShopItem : MonoBehaviour {
     public void Buy() {
         if (InventoryManager.main.BuyItem(inventoryItem)) {
             buyButtonContainer.SetActive(false);
-            buyAmmoButton.EnableButton();
+            if (buyAmmoButton.isActiveAndEnabled) {
+                buyAmmoButton.EnableButton();
+            }
             buyButton.DisableButton();
         }
     }

@@ -1054,6 +1054,7 @@ MonoBehaviour:
   txtKey: {fileID: 346542813136008818}
   txtAmmoCount: {fileID: 2225187714293900373}
   imgIcon: {fileID: 5394740059692728285}
+  imgAmmoIcon: {fileID: 9107339574253465407}
 --- !u!1 &8535615817130256772
 GameObject:
   m_ObjectHideFlags: 0
