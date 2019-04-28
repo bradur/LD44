@@ -65,6 +65,21 @@ TextureImporter:
   - first:
       213: -4905790078254811594
     second: Crosshair
+  - first:
+      213: -6088518344708910600
+    second: Shotgun
+  - first:
+      213: -1529304704666884039
+    second: ShotgunAmo
+  - first:
+      213: -8676687909790220325
+    second: ShotgunPellets
+  - first:
+      213: -6213736251614103907
+    second: C4Detonator
+  - first:
+      213: 396034039200512455
+    second: C4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -544,7 +559,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -565,7 +580,7 @@ TextureImporter:
         width: 63
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -594,6 +609,111 @@ TextureImporter:
       bones: []
       spriteID: 9d90dfad67ef684409e69c68cb6af174
       internalID: -4905790078254811594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shotgun
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd0f77773ace6f40994a9dafeba357d
+      internalID: -6088518344708910600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunAmo
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.48359728, y: 0.5032811}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20de7dad6edab7d47b7d430925485df2
+      internalID: -1529304704666884039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunPellets
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 62
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.51393366}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d729d225317fd4996fe792ec205950
+      internalID: -8676687909790220325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C4Detonator
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4adfef15ba566b6448033a6572095cf3
+      internalID: -6213736251614103907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a29f76c8c59f02439ecc17def3b8bf9
+      internalID: 396034039200512455
       vertices: []
       indices: 
       edges: []

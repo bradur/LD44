@@ -17,6 +17,16 @@ public class Projectile : MonoBehaviour
     private ProjectileConfig config;
 
     private float lifeTimer = 0f;
+    private float afterBlowUpTimer = 0f;
+    private float afterBlowUpInterval = 0.4f;
+
+    private bool blownUp = false;
+
+    [SerializeField]
+    private GameObject particles;
+
+    [SerializeField]
+    private Animator animator;
 
     Vector2 myDirection;
 
@@ -25,13 +35,22 @@ public class Projectile : MonoBehaviour
         config = projectileConfig;
         spriteRenderer.sprite = config.RealWorldSprite;
         transform.position = newPosition;
-        myDirection = direction;
 
-        if (projectileConfig.Melee) {
+        if (projectileConfig.Mine)
+        {
+
+        }
+        else if (projectileConfig.Melee)
+        {
+            Debug.Log("Melee!");
             transform.SetParent(origin);
             transform.rotation = origin.rotation;
-        } else {
+            myDirection = direction;
+        }
+        else
+        {
             Shoot(direction);
+            myDirection = direction;
         }
     }
 
@@ -40,12 +59,56 @@ public class Projectile : MonoBehaviour
         rb.velocity = direction * config.Speed;
     }
 
+
+    public void BlowUp() {
+
+        particles.SetActive(true);
+        animator.enabled = true;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, config.ExplosionRadius, config.AffectedByExplosionLayer);
+        foreach(Collider collider in colliders) {
+            if (collider != null) {
+                Vector2 heading = collider.transform.position - transform.position;
+                Vector2 direction = heading / heading.magnitude;
+                RaycastHit hit;
+                Debug.DrawRay(transform.position, direction, Color.magenta, config.ExplosionRadius + 1f);
+                if (Physics.Raycast(
+                    transform.position,
+                    direction,
+                    out hit,
+                    config.ExplosionRadius / 2f
+                )) {
+                    if (hit.collider.gameObject.tag == "Enemy") {
+                        Enemy enemy = hit.collider.GetComponent<Enemy>();
+                        if (enemy) {
+                            enemy.TakeDamage(config.Damage, direction * config.PushForce);
+                        }
+                    } else if (hit.collider.gameObject.tag == "DestroyableWall") {
+                        Destroy(hit.collider.gameObject);
+                    } else if (hit.collider.gameObject.tag == "Player") {
+                        PlayerCharacter player = hit.collider.GetComponent<PlayerCharacter>();
+                        player.TakeDamage(config.Damage);
+                    }
+                } else {
+                }
+            }
+        }
+        blownUp = true;
+    }
+
     void Update()
     {
-        lifeTimer += Time.deltaTime;
-        if (lifeTimer > config.LifeTime)
+        if (config.LifeTime >= 0)
         {
-            Destroy(gameObject);
+            lifeTimer += Time.deltaTime;
+            if (lifeTimer > config.LifeTime)
+            {
+                Destroy(gameObject);
+            }
+        } else if (blownUp) {
+            afterBlowUpTimer += Time.deltaTime;
+            if (afterBlowUpTimer > afterBlowUpInterval) {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -54,9 +117,12 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (config.PushForce > 0) {
+            if (config.PushForce > 0)
+            {
                 enemy.TakeDamage(config.Damage, myDirection * config.PushForce);
-            } else {
+            }
+            else
+            {
                 enemy.TakeDamage(config.Damage);
             }
         }
@@ -65,6 +131,9 @@ public class Projectile : MonoBehaviour
             PlayerCharacter player = collision.gameObject.GetComponent<PlayerCharacter>();
             player.TakeDamage(config.Damage);
         }
-        Destroy(gameObject);
+        if (!config.Mine) {
+            Destroy(gameObject);
+        }
+
     }
 }

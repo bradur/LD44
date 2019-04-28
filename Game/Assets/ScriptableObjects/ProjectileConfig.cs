@@ -28,6 +28,9 @@ public class ProjectileConfig : ScriptableObject
     public bool Melee { get { return melee; } }
 
     [SerializeField]
+    private bool mine = false;
+    public bool Mine { get { return mine; } }
+    [SerializeField]
     private string configName;
     public string Name { get { return configName; } }
 
@@ -47,5 +50,13 @@ public class ProjectileConfig : ScriptableObject
     [SerializeField]
     private float pushForce = 0f;
     public float PushForce { get { return pushForce; } }
+
+    [SerializeField]
+    private float explosionRadius = 0f;
+    public float ExplosionRadius { get { return explosionRadius; } }
+
+    [SerializeField]
+    private LayerMask affectedByExplosionLayer;
+    public LayerMask AffectedByExplosionLayer { get { return affectedByExplosionLayer; } }
 
 }

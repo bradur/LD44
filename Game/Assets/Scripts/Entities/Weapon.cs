@@ -35,12 +35,20 @@ public class Weapon : MonoBehaviour
 
     public void Shoot(Vector2 direction, Vector2 position, Transform origin)
     {
-        if (config.Projectile.ProjectilePrefab != null) {
-            projectile = Instantiate(config.Projectile.ProjectilePrefab);
-        } else {
-            projectile = Instantiate(gameConfig.ProjectilePrefab);
+        if (config.Projectile.Mine && projectile != null) {
+            projectile.BlowUp();
+            projectile = null;
+        } else if (item.Ammo > 0 || config.Projectile.Melee) {
+            if (config.Projectile.ProjectilePrefab != null) {
+                projectile = Instantiate(config.Projectile.ProjectilePrefab);
+            } else {
+                projectile = Instantiate(gameConfig.ProjectilePrefab);
+            }
+            projectile.Init(config.Projectile, direction, position, origin);
+            item.Ammo -= 1;
+            UIInventoryManager.main.UpdateAmmo(item);
         }
-        projectile.Init(config.Projectile, direction, position, origin);
+
     }
 
     public void ShootAsEnemy(Vector2 direction, Vector2 position, Transform origin)

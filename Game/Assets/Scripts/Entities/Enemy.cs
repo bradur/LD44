@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour {
    public void TakeDamage(int damage, Vector2 pushBack) {
         health -= damage;
         followPlayer.GetPushed();
+        followPlayer.GetHit();
         rb.AddForce(pushBack * 10f, ForceMode.Impulse);
         if (health <= 0) {
             Destroy(gameObject);

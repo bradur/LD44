@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    void Update(){
+        Cursor.visible = false;
+    }
+
     public void StartNextLevel()
     {
         if (config == null)
