@@ -9,6 +9,8 @@ using UnityEngine.EventSystems;
 
 public class RestartButton : MonoBehaviour {
 
+    [SerializeField]
+    private bool levelEnd = false;
     UIPointable uiPointable;
     public void Start()
     {
@@ -36,7 +38,7 @@ public class RestartButton : MonoBehaviour {
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         UIInventoryManager.main.UseCursor();
-        GameManager.main.Restart();
+        GameManager.main.Restart(levelEnd);
     }
 
 }

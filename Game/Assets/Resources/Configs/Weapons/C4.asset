@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   projectilePrefab: {fileID: 512775331847541310, guid: e92cbbf0785c3f84eb03a96861b8f6f5,
     type: 3}
-  basePrice: 20
+  basePrice: 10
   melee: 0
   mine: 1
   configName: C4

@@ -16,6 +16,6 @@ MonoBehaviour:
     type: 3}
   configName: Shotgun
   keyCode: 51
-  basePrice: 80
+  basePrice: 90
   fireInterval: 2
   projectile: {fileID: 11400000, guid: 34e82c506f81ef948be34dd0e3b3d10f, type: 2}

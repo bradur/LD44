@@ -61,7 +61,7 @@ public class UIShopItem : MonoBehaviour {
     }
 
     public void SetParent(RectTransform rt) {
-        rectTransform.SetParent(rt);
+        rectTransform.SetParent(rt, false);
     }
     public void SetAmmo(int ammo) {
         txtAmmoCount.text = ammo.ToString();

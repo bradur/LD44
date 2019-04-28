@@ -13,24 +13,8 @@ MonoBehaviour:
   m_Name: InventoryConfig
   m_EditorClassIdentifier: 
   initialCurrency: 100
-  purchasedItems:
-  - purchased: 1
-    weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}
-    selectOrder: 2
-    ammo: 0
-    unlimitedAmmo: 0
+  purchasedItems: []
   availableItems:
-  - purchased: 1
-    weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}
-    selectOrder: 2
-    ammo: 0
-    unlimitedAmmo: 0
-  - purchased: 0
-    weaponConfig: {fileID: 11400000, guid: 1c0f1e4bcbca3df4385209c205c0e774, type: 2}
-    selectOrder: 1
-    ammo: -1
-    unlimitedAmmo: 1
-  initialItems:
   - purchased: 0
     weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}
     selectOrder: 2
@@ -45,6 +29,27 @@ MonoBehaviour:
     weaponConfig: {fileID: 11400000, guid: 7a228234225a57a4cac7fdce4269ce09, type: 2}
     selectOrder: 3
     ammo: 5
+    unlimitedAmmo: 0
+  - purchased: 0
+    weaponConfig: {fileID: 11400000, guid: c22867d67c6ae924d8ec3715d0f54a1a, type: 2}
+    selectOrder: 4
+    ammo: 1
+    unlimitedAmmo: 0
+  initialItems:
+  - purchased: 0
+    weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}
+    selectOrder: 2
+    ammo: 5
+    unlimitedAmmo: 0
+  - purchased: 0
+    weaponConfig: {fileID: 11400000, guid: 1c0f1e4bcbca3df4385209c205c0e774, type: 2}
+    selectOrder: 1
+    ammo: -1
+    unlimitedAmmo: 1
+  - purchased: 0
+    weaponConfig: {fileID: 11400000, guid: 7a228234225a57a4cac7fdce4269ce09, type: 2}
+    selectOrder: 3
+    ammo: 2
     unlimitedAmmo: 0
   - purchased: 0
     weaponConfig: {fileID: 11400000, guid: c22867d67c6ae924d8ec3715d0f54a1a, type: 2}

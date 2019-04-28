@@ -45,8 +45,6 @@ public class UIStartLevelButton : MonoBehaviour {
         } else {
             GameManager.main.StartCurrentLevel();
         }
-        
-        InventoryManager.main.HideShop();
     }
 
 }

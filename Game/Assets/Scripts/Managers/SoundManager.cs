@@ -151,12 +151,14 @@ public class SoundManager : MonoBehaviour
     private bool gameToMenu = false;
     public void FadeMenuToGame()
     {
+        gameToMenu = false;
         menuToGame = true;
         FadeOutMenuMusic();
     }
 
     public void FadeGameToMenu()
     {
+        menuToGame = false;
         gameToMenu = true;
         FadeOutGameMusic();
     }

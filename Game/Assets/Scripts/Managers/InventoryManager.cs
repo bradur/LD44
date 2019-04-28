@@ -26,6 +26,10 @@ public class InventoryManager : MonoBehaviour {
         UIShop.main.DisplayItems(config);
     }
 
+    public bool PurchasesHaveBeenMade() {
+        return config.PurchasedItems.Count > 0;
+    }
+
     public void ProcessPurchasedItems() {
         foreach(InventoryItem item in config.PurchasedItems) {
             Weapon newWeapon = Instantiate(gameConfig.WeaponPrefab);
@@ -99,7 +103,7 @@ public class InventoryManager : MonoBehaviour {
     }
 
     public void EnableNextLevelButton() {
-        
+
     }
 
 }

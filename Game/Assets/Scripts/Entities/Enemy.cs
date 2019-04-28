@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField]
     private Rigidbody rb;
+    private bool dead = false;
 
     public void Init() {
         gameConfig = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
@@ -61,8 +62,11 @@ public class Enemy : MonoBehaviour {
         followPlayer.GetHit();
         rb.AddForce(pushBack * 10f, ForceMode.Impulse);
         if (health <= 0) {
-            GameManager.main.KillEnemy(projectileConfig);
-            Destroy(gameObject);
+            if (!dead) {
+                dead = true;
+                GameManager.main.KillEnemy(projectileConfig);
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -70,8 +74,12 @@ public class Enemy : MonoBehaviour {
         followPlayer.GetHit();
         health -= projectileConfig.Damage;
         if (health <= 0) {
-            GameManager.main.KillEnemy(projectileConfig);
-            Destroy(gameObject);
+            Debug.Log("Killing enemy: " + gameObject);
+            if (!dead) {
+                dead = true;
+                GameManager.main.KillEnemy(projectileConfig);
+                Destroy(gameObject);
+            }
         }
     }
 
