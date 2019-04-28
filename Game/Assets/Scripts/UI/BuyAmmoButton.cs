@@ -29,7 +29,7 @@ public class BuyAmmoButton : MonoBehaviour
     private bool isDisabled = true;
 
     private float ammoTimer = 5f;
-    private float ammoBuyInterval = 0.2f;
+    private float ammoBuyInterval = 0.1f;
 
     public void Init(UIShopItem shopItem, InventoryItem item)
     {

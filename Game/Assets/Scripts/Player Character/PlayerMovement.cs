@@ -29,11 +29,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             velocity.y = config.PlayerSpeed;
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             velocity.y = -config.PlayerSpeed;
         }
@@ -41,11 +41,11 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = 0;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             velocity.x = config.PlayerSpeed;
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             velocity.x = -config.PlayerSpeed;
         }
@@ -58,7 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = (-transform.up * velocity.y) + (transform.right * velocity.x);
+        //rb.velocity = (-transform.up * velocity.y) + (transform.right * velocity.x);
+        rb.velocity = (Vector3.up * velocity.y) + (Vector3.right * velocity.x);
     }
 
     private void LateUpdate() {
