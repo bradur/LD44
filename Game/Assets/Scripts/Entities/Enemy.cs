@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour {
         weapon = Instantiate(gameConfig.WeaponPrefab);
         weapon.Init(config.WeaponConfig);
         weaponConfig = config.WeaponConfig;
+        weapon.transform.parent = GameManager.main.WorldParent;
     }
 
 
@@ -54,20 +55,22 @@ public class Enemy : MonoBehaviour {
         weapon.ShootAsEnemy(direction, position, transform);
     }
 
-   public void TakeDamage(int damage, Vector2 pushBack) {
-        health -= damage;
+   public void TakeDamage(ProjectileConfig projectileConfig, Vector2 pushBack) {
+        health -= projectileConfig.Damage;
         followPlayer.GetPushed();
         followPlayer.GetHit();
         rb.AddForce(pushBack * 10f, ForceMode.Impulse);
         if (health <= 0) {
+            GameManager.main.KillEnemy(projectileConfig);
             Destroy(gameObject);
         }
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(ProjectileConfig projectileConfig) {
         followPlayer.GetHit();
-        health -= damage;
+        health -= projectileConfig.Damage;
         if (health <= 0) {
+            GameManager.main.KillEnemy(projectileConfig);
             Destroy(gameObject);
         }
     }

@@ -34,6 +34,14 @@ public class InventoryManager : MonoBehaviour {
         }
     }
 
+    public void ResetPurchasedItems() {
+        config.PurchasedItems.Clear();
+    }
+
+    public void ResetHealth() {
+        config.ResetCurrency();
+    }
+
     public bool BuyItem(InventoryItem item) {
         if (config.PurchaseItem(item)) {
             UIShop.main.SetCurrency(config.Currency);

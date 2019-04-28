@@ -20,6 +20,9 @@ public class Projectile : MonoBehaviour
     private float afterBlowUpTimer = 0f;
     private float afterBlowUpInterval = 0.4f;
 
+    private float blowUpCheckInterval = 0.1f;
+    private float blowUpCheckTimer = 0f;
+
     private bool blownUp = false;
 
     [SerializeField]
@@ -38,17 +41,17 @@ public class Projectile : MonoBehaviour
 
         if (projectileConfig.Mine)
         {
-
+            transform.SetParent(GameManager.main.WorldParent);
         }
         else if (projectileConfig.Melee)
         {
-            Debug.Log("Melee!");
             transform.SetParent(origin);
             transform.rotation = origin.rotation;
             myDirection = direction;
         }
         else
         {
+            transform.SetParent(GameManager.main.WorldParent);
             Shoot(direction);
             myDirection = direction;
         }
@@ -59,11 +62,7 @@ public class Projectile : MonoBehaviour
         rb.velocity = direction * config.Speed;
     }
 
-
-    public void BlowUp() {
-
-        particles.SetActive(true);
-        animator.enabled = true;
+    void CheckExplosion() {
         Collider[] colliders = Physics.OverlapSphere(transform.position, config.ExplosionRadius, config.AffectedByExplosionLayer);
         foreach(Collider collider in colliders) {
             if (collider != null) {
@@ -80,7 +79,7 @@ public class Projectile : MonoBehaviour
                     if (hit.collider.gameObject.tag == "Enemy") {
                         Enemy enemy = hit.collider.GetComponent<Enemy>();
                         if (enemy) {
-                            enemy.TakeDamage(config.Damage, direction * config.PushForce);
+                            enemy.TakeDamage(config, direction * config.PushForce);
                         }
                     } else if (hit.collider.gameObject.tag == "DestroyableWall") {
                         Destroy(hit.collider.gameObject);
@@ -88,10 +87,14 @@ public class Projectile : MonoBehaviour
                         PlayerCharacter player = hit.collider.GetComponent<PlayerCharacter>();
                         player.TakeDamage(config.Damage);
                     }
-                } else {
                 }
             }
         }
+    }
+    public void BlowUp() {
+        particles.SetActive(true);
+        animator.enabled = true;
+        CheckExplosion();
         blownUp = true;
     }
 
@@ -105,6 +108,10 @@ public class Projectile : MonoBehaviour
                 Destroy(gameObject);
             }
         } else if (blownUp) {
+            blowUpCheckTimer += Time.deltaTime;
+            if (blowUpCheckTimer > blowUpCheckInterval) {
+                CheckExplosion();
+            }
             afterBlowUpTimer += Time.deltaTime;
             if (afterBlowUpTimer > afterBlowUpInterval) {
                 Destroy(gameObject);
@@ -119,11 +126,11 @@ public class Projectile : MonoBehaviour
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (config.PushForce > 0)
             {
-                enemy.TakeDamage(config.Damage, myDirection * config.PushForce);
+                enemy.TakeDamage(config, myDirection * config.PushForce);
             }
             else
             {
-                enemy.TakeDamage(config.Damage);
+                enemy.TakeDamage(config);
             }
         }
         else if (collision.gameObject.tag == "Player")

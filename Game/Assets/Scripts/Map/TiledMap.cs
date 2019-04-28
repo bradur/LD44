@@ -13,6 +13,8 @@ public class TiledMap : MonoBehaviour
     private List<Transform> containers = new List<Transform>();
     private GameConfig gameConfig;
 
+    private int enemyNumber;
+
     [SerializeField]
     private Cinemachine.CinemachineVirtualCamera playerCamera;
 
@@ -65,6 +67,7 @@ public class TiledMap : MonoBehaviour
                 {
                     meshLayer.Add(meshFilter);
                 }
+                wall.transform.SetParent(GetContainer("DudWalls"));
             }
         }
         meshLayer.Build();
@@ -73,6 +76,7 @@ public class TiledMap : MonoBehaviour
 
     private void SpawnObjects(TmxMap map)
     {
+        enemyNumber = 0;
         int mapHeight = map.Height;
         foreach (TmxObjectGroup objectGroup in map.ObjectGroups)
         {
@@ -87,6 +91,7 @@ public class TiledMap : MonoBehaviour
                 );
             }
         }
+        GameManager.main.SetNumberOfEnemies(enemyNumber);
     }
 
 
@@ -102,8 +107,14 @@ public class TiledMap : MonoBehaviour
         if (gameObject.tag == "Enemy") {
             Enemy enemy = gameObject.GetComponent<Enemy>();
             enemy.Init();
+            enemyNumber += 1;
         }
         gameObject.transform.position = new Vector2(x, y);
+        gameObject.transform.SetParent(GameManager.main.WorldParent);
+    }
+
+    public void ResetContainers() {
+        containers.Clear();
     }
 
     private Transform GetContainer(string containerName)
@@ -121,6 +132,7 @@ public class TiledMap : MonoBehaviour
         {
             newContainer = Instantiate(gameConfig.ContainerPrefab);
             newContainer.name = containerName;
+            newContainer.SetParent(GameManager.main.WorldParent);
             containers.Add(newContainer);
         }
         return newContainer;

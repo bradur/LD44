@@ -2588,7 +2588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiledMap: {fileID: 1915005767}
-  worldParent: {fileID: 0}
 --- !u!114 &1915005769
 MonoBehaviour:
   m_ObjectHideFlags: 0

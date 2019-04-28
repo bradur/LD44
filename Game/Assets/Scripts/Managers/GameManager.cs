@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TiledMap tiledMap;
 
-    [SerializeField]
     private Transform worldParent;
 
     public Transform WorldParent { get { return worldParent; } }
@@ -31,6 +30,29 @@ public class GameManager : MonoBehaviour
 
     void Update(){
         Cursor.visible = false;
+    }
+
+    public void KillEnemy(ProjectileConfig projectile) {
+        Debug.Log(string.Format("Enemy was killed by {0}", projectile.Name));
+        numberOfEnemies -= 1;
+        if (numberOfEnemies <= 0) {
+            Destroy(worldParent.gameObject);
+            UIInventoryManager.main.ClearItems();
+            tiledMap.ResetContainers();
+            InventoryManager.main.Init();
+            InventoryManager.main.ShowShop();
+            /*
+            InventoryManager.main.ResetHealth();
+            InventoryManager.main.ResetPurchasedItems();
+            InventoryManager.main.ProcessPurchasedItems();
+            InventoryManager.main.UpdateHealth();
+            UIShop.main.SetCurrency(InventoryManager.main.GetHealth());*/
+        }
+    }
+
+    int numberOfEnemies = 0;
+    public void SetNumberOfEnemies(int number) {
+        numberOfEnemies = number;
     }
 
     public void StartNextLevel()
@@ -48,6 +70,8 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Game over!");
             }
         }
+        worldParent = Instantiate(config.ContainerPrefab);
+        worldParent.name = config.CurrentLevel.Name;
         tiledMap.Initialize();
         UIInventoryManager.main.UseCrosshair();
         InventoryManager.main.ProcessPurchasedItems();

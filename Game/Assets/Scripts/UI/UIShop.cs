@@ -24,6 +24,8 @@ public class UIShop : MonoBehaviour
     [SerializeField]
     private Text txtCurrency;
 
+    private List<UIShopItem> items = new List<UIShopItem>();
+
     void Start()
     {
         config = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
@@ -31,11 +33,15 @@ public class UIShop : MonoBehaviour
 
     public void DisplayItems(InventoryConfig inventoryConfig)
     {
+        foreach (UIShopItem item in items) {
+            Destroy(item.gameObject);
+        }
         foreach (InventoryItem item in inventoryConfig.AvailableItems)
         {
             UIShopItem uiShopItem = Instantiate(config.UIShopItemPrefab);
             uiShopItem.Init(item);
             uiShopItem.SetParent(uiShopItemContainer);
+            items.Add(uiShopItem);
         }
         SetCurrency(inventoryConfig.Currency);
     }

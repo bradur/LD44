@@ -38,6 +38,7 @@ public class MeshTileMap : MonoBehaviour
         width = map.Width;
         GenerateMesh();
         DeterminePosition();
+        transform.SetParent(GameManager.main.WorldParent);
     }
 
     private void DeterminePosition() {
