@@ -70,6 +70,7 @@ public class UIShopItem : MonoBehaviour {
     public void Buy() {
         if (InventoryManager.main.BuyItem(inventoryItem)) {
             buyButtonContainer.SetActive(false);
+            SoundManager.main.PlaySound(SoundType.BuyGun);
             if (buyAmmoButton.isActiveAndEnabled) {
                 buyAmmoButton.EnableButton();
             }
@@ -80,6 +81,7 @@ public class UIShopItem : MonoBehaviour {
     public void BuyAmmo() {
         if (InventoryManager.main.BuyAmmo(inventoryItem)) {
             SetAmmo(inventoryItem.Ammo);
+            SoundManager.main.PlaySound(SoundType.BuyAmmo);
         }
     }
 

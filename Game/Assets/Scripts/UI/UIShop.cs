@@ -26,15 +26,28 @@ public class UIShop : MonoBehaviour
 
     private List<UIShopItem> items = new List<UIShopItem>();
 
+    [SerializeField]
+    private GameObject nextLevelButton;
+
     void Start()
     {
         config = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
     }
+    public void ShowNextLevelButton() {
+        nextLevelButton.SetActive(true);
+    }
+
+    public void HideNextLevelButton() {
+        nextLevelButton.SetActive(false);
+    }
 
     public void DisplayItems(InventoryConfig inventoryConfig)
     {
+        HideNextLevelButton();
         foreach (UIShopItem item in items) {
-            Destroy(item.gameObject);
+            if (item != null) {
+                Destroy(item.gameObject);
+            }
         }
         foreach (InventoryItem item in inventoryConfig.AvailableItems)
         {

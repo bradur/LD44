@@ -88,6 +88,9 @@ public class UIInventoryItem : MonoBehaviour {
 
     public void SetParent(RectTransform rt) {
         rectTransform.SetParent(rt, false);
+        /*rectTransform.pivot = new Vector2(0f, 0f);
+        rectTransform.anchoredPosition = new Vector2(0, 0);*/
+        rectTransform.localPosition = Vector2.zero;
     }
     public void SetAmmo(int ammo) {
         if (!inventoryItem.UnlimitedAmmo) {

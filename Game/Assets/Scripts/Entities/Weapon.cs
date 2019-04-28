@@ -36,6 +36,7 @@ public class Weapon : MonoBehaviour
     public void Shoot(Vector2 direction, Vector2 position, Transform origin)
     {
         if (config.Projectile.Mine && projectile != null) {
+            SoundManager.main.PlaySound(SoundType.C4Activate);
             projectile.BlowUp();
             projectile = null;
         } else if (item.Ammo > 0 || config.Projectile.Melee) {
@@ -43,6 +44,11 @@ public class Weapon : MonoBehaviour
                 projectile = Instantiate(config.Projectile.ProjectilePrefab);
             } else {
                 projectile = Instantiate(gameConfig.ProjectilePrefab);
+            }
+            if (config.Name == "Pistol") {
+                SoundManager.main.PlaySound(SoundType.PistolShot);
+            } else if (config.Name == "Shotgun"){
+                SoundManager.main.PlaySound(SoundType.ShotgunShot);
             }
             projectile.Init(config.Projectile, direction, position, origin);
             item.Ammo -= 1;
@@ -57,6 +63,11 @@ public class Weapon : MonoBehaviour
             projectile = Instantiate(config.Projectile.ProjectilePrefab);
         } else {
             projectile = Instantiate(gameConfig.ProjectilePrefab);
+        }
+        if (config.Name == "Pistol") {
+            SoundManager.main.PlaySound(SoundType.PistolShot);
+        } else if (config.Name == "Shotgun"){
+            SoundManager.main.PlaySound(SoundType.ShotgunShot);
         }
         projectile.gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
         projectile.Init(config.Projectile, direction, position, origin);

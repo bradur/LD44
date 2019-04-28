@@ -45,13 +45,14 @@ public class PlayerCharacter : MonoBehaviour
     }
 
     void Die() {
+        GameManager.main.ShowYouDiedScreen();
         Debug.Log("You died!");
     }
 
     void Update()
     {
         shootTimer += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+        if (Time.timeScale > 0f && (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)))
         {
             InventoryItem selectedItem = InventoryManager.main.GetCurrentItem();
             if (selectedItem != null && selectedItem.WeaponConfig != null && shootTimer > selectedItem.WeaponConfig.FireInterval)

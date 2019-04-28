@@ -98,4 +98,8 @@ public class InventoryManager : MonoBehaviour {
         UIShop.main.gameObject.SetActive(true);
     }
 
+    public void EnableNextLevelButton() {
+        
+    }
+
 }

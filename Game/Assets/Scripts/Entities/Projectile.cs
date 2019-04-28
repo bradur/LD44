@@ -42,6 +42,7 @@ public class Projectile : MonoBehaviour
         if (projectileConfig.Mine)
         {
             transform.SetParent(GameManager.main.WorldParent);
+            SoundManager.main.PlaySound(SoundType.C4Plant);
         }
         else if (projectileConfig.Melee)
         {
@@ -94,6 +95,7 @@ public class Projectile : MonoBehaviour
     public void BlowUp() {
         particles.SetActive(true);
         animator.enabled = true;
+        SoundManager.main.PlaySound(SoundType.C4Explosion);
         CheckExplosion();
         blownUp = true;
     }
@@ -121,7 +123,7 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (!config.Mine && collision.gameObject.tag == "Enemy")
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (config.PushForce > 0)

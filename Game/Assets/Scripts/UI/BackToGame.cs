@@ -1,4 +1,4 @@
-// Date   : 27.04.2019 20:32
+// Date   : 28.04.2019 18:32
 // Project: New Unity Project
 // Author : bradur
 
@@ -7,16 +7,13 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class UIStartLevelButton : MonoBehaviour {
+public class BackToGame : MonoBehaviour
+{
 
+    UIPointable uiPointable;
 
-    [SerializeField]
-    private UIPointable uiPointable;
-
-    [SerializeField]
-    private bool nextLevel = false;
-
-    void Start() {
+    public void Start()
+    {
         uiPointable = GetComponent<UIPointable>();
         if (uiPointable != null)
         {
@@ -40,13 +37,9 @@ public class UIStartLevelButton : MonoBehaviour {
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        if (nextLevel) {
-            GameManager.main.StartNextLevel();
-        } else {
-            GameManager.main.StartCurrentLevel();
-        }
-        
-        InventoryManager.main.HideShop();
+        UIInventoryManager.main.UseCursor();
+        GameManager.main.BackToGame();
     }
+
 
 }
