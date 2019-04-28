@@ -53,7 +53,7 @@ public class PlayerCharacter : MonoBehaviour
     void Update()
     {
         shootTimer += Time.deltaTime;
-        if (Time.timeScale > 0f && (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)))
+        if (GameManager.main.InGame() && Time.timeScale > 0f && (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)))
         {
             InventoryItem selectedItem = InventoryManager.main.GetCurrentItem();
             if (selectedItem != null && selectedItem.WeaponConfig != null && shootTimer > selectedItem.WeaponConfig.FireInterval)

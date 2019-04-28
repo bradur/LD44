@@ -113,16 +113,19 @@ public class GameManager : MonoBehaviour
     public void ShowShop()
     {
         Destroy(worldParent.gameObject);
-        UIInventoryManager.main.ClearItems();
         tiledMap.ResetContainers();
         InventoryManager.main.ResetPurchasedItems();
-        //InventoryManager.main.ProcessPurchasedItems();
+        InventoryManager.main.ProcessPurchasedItems();
         InventoryManager.main.Init();
         InventoryManager.main.ShowShop();
         InventoryManager.main.ResetHealth();
         InventoryManager.main.UpdateHealth();
         SoundManager.main.FadeGameToMenu();
         inGame = false;
+    }
+
+    public bool InGame () {
+        return inGame;
     }
 
     public void KillEnemy(ProjectileConfig projectile)

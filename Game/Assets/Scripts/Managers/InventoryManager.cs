@@ -49,6 +49,7 @@ public class InventoryManager : MonoBehaviour {
 
     public void ResetPurchasedItems() {
         config.PurchasedItems.Clear();
+        UIInventoryManager.main.ClearItems();
     }
 
     public void ResetHealth() {

@@ -69,7 +69,7 @@ public class UIInventoryManager : MonoBehaviour
     {
         foreach (UIInventoryItem uiItem in items)
         {
-            Destroy(uiItem);
+            Destroy(uiItem.gameObject);
         }
         items.Clear();
     }
