@@ -13,9 +13,16 @@ public class PlayerCharacter : MonoBehaviour
     private float shootTimer = 99f;
     private float shootInterval = 1f;
 
+    private int health = 100;
+
     public void Init()
     {
         gameConfig = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
+        health = InventoryManager.main.GetHealth();
+    }
+
+    public void SetHealth(int newHealth) {
+        health = newHealth;
     }
 
     public void Shoot()
@@ -24,11 +31,23 @@ public class PlayerCharacter : MonoBehaviour
         if (item.Ammo > 0)
         {
             if (item.Weapon) {
-                item.Weapon.Shoot(-transform.up, transform.position - transform.up);
+                item.Weapon.Shoot(-transform.up, transform.position - (transform.up * 0.2f) );
                 item.Ammo -= 1;
                 UIInventoryManager.main.UpdateAmmo(item);
             }
         }
+    }
+
+    public void TakeDamage(int damage) {
+        health -= damage;
+        InventoryManager.main.UpdateHealth(health);
+        if (health <= 0) {
+            Die();
+        }
+    }
+
+    void Die() {
+        Debug.Log("You died!");
     }
 
     void Update()
@@ -36,7 +55,8 @@ public class PlayerCharacter : MonoBehaviour
         shootTimer += Time.deltaTime;
         if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
-            if (shootTimer > InventoryManager.main.GetCurrentItem().WeaponConfig.FireInterval)
+            InventoryItem selectedItem = InventoryManager.main.GetCurrentItem();
+            if (selectedItem != null && selectedItem.WeaponConfig != null && shootTimer > selectedItem.WeaponConfig.FireInterval)
             {
                 shootTimer = 0f;
                 Shoot();

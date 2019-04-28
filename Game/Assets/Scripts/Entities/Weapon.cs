@@ -5,7 +5,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : MonoBehaviour
+{
 
     private WeaponConfig config;
 
@@ -15,24 +16,44 @@ public class Weapon : MonoBehaviour {
 
     private InventoryItem item;
 
-    public void Init(InventoryItem item) {
+    public void Init(InventoryItem item)
+    {
+        transform.SetParent(GameManager.main.WorldParent);
         gameConfig = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
+
         config = item.WeaponConfig;
         item.Weapon = this;
         this.item = item;
     }
 
-    public void Shoot(Vector2 direction, Vector2 position) {
+    public void Init(WeaponConfig weapon)
+    {
+        gameConfig = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
+        config = weapon;
+    }
+
+
+    public void Shoot(Vector2 direction, Vector2 position)
+    {
         projectile = Instantiate(gameConfig.ProjectilePrefab);
         projectile.Init(config.Projectile, direction, position);
     }
 
-    void Select() {
+    public void ShootAsEnemy(Vector2 direction, Vector2 position)
+    {
+        projectile = Instantiate(gameConfig.EnemyProjectilePrefab);
+        projectile.Init(config.Projectile, direction, position);
+    }
+
+    void Select()
+    {
         InventoryManager.main.Select(item);
     }
 
-    void Update () {
-        if (Input.GetKeyDown(config.KeyCode)) {
+    void Update()
+    {
+        if (Input.GetKeyDown(config.KeyCode))
+        {
             Select();
         }
     }

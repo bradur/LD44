@@ -115,7 +115,7 @@
   <object id="1" name="Enemy" gid="17" x="1024" y="960" width="64" height="64"/>
   <object id="8" name="Enemy" gid="17" x="1088" y="1024" width="64" height="64"/>
   <object id="9" name="Enemy" gid="17" x="1088" y="1088" width="64" height="64"/>
-  <object id="10" name="Enemy" gid="17" x="1152" y="1216" width="64" height="64"/>
+  <object id="10" name="Enemy" gid="17" x="2368" y="2176" width="64" height="64"/>
   <object id="11" name="Enemy" gid="17" x="896" y="1088" width="64" height="64"/>
   <object id="12" name="Enemy" gid="17" x="1024" y="768" width="64" height="64"/>
   <object id="14" name="Enemy" gid="17" x="1088" y="832" width="64" height="64"/>

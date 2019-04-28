@@ -22,10 +22,17 @@ public class UIInventoryManager : MonoBehaviour {
     [SerializeField]
     private RectTransform inventoryItemParent;
 
+    [SerializeField]
+    private Text txtHealth;
+
     private List<UIInventoryItem> items = new List<UIInventoryItem>();
 
     private void Start() {
         config = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
+    }
+
+    public void SetHealth(int health) {
+        txtHealth.text = health.ToString();
     }
 
     public void AddItem(InventoryItem item) {

@@ -13,4 +13,8 @@ public class EnemyConfig : ScriptableObject
     private string configName;
     public string Name { get { return configName; } }
 
+    [SerializeField]
+    private WeaponConfig weaponConfig;
+    public WeaponConfig WeaponConfig { get { return weaponConfig; } }
+
 }

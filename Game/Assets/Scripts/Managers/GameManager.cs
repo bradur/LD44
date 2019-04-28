@@ -5,31 +5,44 @@
 using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public static GameManager main;
 
 
-    void Awake() {
+    void Awake()
+    {
         main = this;
     }
 
     [SerializeField]
     private TiledMap tiledMap;
+
+    [SerializeField]
+    private Transform worldParent;
+
+    public Transform WorldParent { get { return worldParent; } }
     GameConfig config;
 
-    public void StartNextLevel() {
-        if (config == null) {
+    public void StartNextLevel()
+    {
+        if (config == null)
+        {
             config = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
             config.CurrentLevel = config.FirstLevel;
-        } else {
+        }
+        else
+        {
             config.CurrentLevel = config.CurrentLevel.NextLevel;
-            if (config.CurrentLevel == null) {
+            if (config.CurrentLevel == null)
+            {
                 Debug.Log("Game over!");
             }
         }
         tiledMap.Initialize();
         InventoryManager.main.ProcessPurchasedItems();
+        InventoryManager.main.UpdateHealth();
     }
 
 }

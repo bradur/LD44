@@ -22,6 +22,9 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField]
     private MoveAroundRandomly moveAround;
 
+    [SerializeField]
+    private Enemy enemy;
+
     private Vector2 direction;
 
     [SerializeField]
@@ -73,6 +76,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void StartFollowing()
     {
+        enemy.EnableShooting();
         moveAround.Reset();
         moveAround.enabled = false;
         isFollowing = true;
@@ -81,6 +85,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void StopFollowing()
     {
+        enemy.DisableShooting();
         animator.SetBool("Walking", false);
         moveAround.enabled = true;
         isFollowing = false;

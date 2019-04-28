@@ -99,6 +99,10 @@ public class TiledMap : MonoBehaviour
             playerCamera.Follow = player.transform;
             player.Init();
         }
+        if (gameObject.tag == "Enemy") {
+            Enemy enemy = gameObject.GetComponent<Enemy>();
+            enemy.Init();
+        }
         gameObject.transform.position = new Vector2(x, y);
     }
 

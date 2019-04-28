@@ -27,6 +27,8 @@ MonoBehaviour:
     type: 3}
   projectilePrefab: {fileID: 512775331847541310, guid: 42421472b80e833448ff62d9ee492c3f,
     type: 3}
+  enemyProjectilePrefab: {fileID: 512775331847541310, guid: ebbe902bf3c0c274e8fa1ca93deefb12,
+    type: 3}
   uiInventoryItemPrefab: {fileID: 5000330569584828310, guid: c21ea771515c2a54989e91c8815e9e10,
     type: 3}
   uiShopItemPrefab: {fileID: 6971482265164673252, guid: b0826b2d3a930874d89ae4a6a7187024,

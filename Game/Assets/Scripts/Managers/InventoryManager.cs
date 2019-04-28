@@ -50,6 +50,21 @@ public class InventoryManager : MonoBehaviour {
         return false;
     }
 
+
+    public void UpdateHealth(int newHealth) {
+        config.Currency = newHealth;
+        UpdateHealth();
+    }
+
+
+    public void UpdateHealth() {
+        UIInventoryManager.main.SetHealth(GetHealth());
+    }
+
+    public int GetHealth() {
+        return config.Currency;
+    }
+
     public InventoryItem GetCurrentItem() {
         return config.GetCurrentItem();
     }

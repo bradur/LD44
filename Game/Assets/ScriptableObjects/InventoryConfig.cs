@@ -9,7 +9,7 @@ public class InventoryConfig : ScriptableObject
     [SerializeField]
     private int initialCurrency = 100;
     private int currency = 100;
-    public int Currency { get { return currency; } }
+    public int Currency { get { return currency; } set { currency = value; } }
 
     [SerializeField]
     private List<InventoryItem> purchasedItems;

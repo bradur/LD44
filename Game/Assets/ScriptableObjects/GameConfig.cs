@@ -55,6 +55,10 @@ public class GameConfig : ScriptableObject
     public Projectile ProjectilePrefab { get { return projectilePrefab; } }
 
     [SerializeField]
+    private Projectile enemyProjectilePrefab;
+    public Projectile EnemyProjectilePrefab { get { return enemyProjectilePrefab; } }
+
+    [SerializeField]
     private UIInventoryItem uiInventoryItemPrefab;
     public UIInventoryItem UIInventoryItemPrefab { get { return uiInventoryItemPrefab; } }
 

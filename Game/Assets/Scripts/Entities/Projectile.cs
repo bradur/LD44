@@ -5,7 +5,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class Projectile : MonoBehaviour {
+public class Projectile : MonoBehaviour
+{
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
@@ -16,28 +17,39 @@ public class Projectile : MonoBehaviour {
     private ProjectileConfig config;
 
     private float lifeTimer = 0f;
-    public void Init(ProjectileConfig projectileConfig, Vector2 direction, Vector2 newPosition) {
+    public void Init(ProjectileConfig projectileConfig, Vector2 direction, Vector2 newPosition)
+    {
         config = projectileConfig;
         spriteRenderer.sprite = config.PreviewPicture;
         transform.position = newPosition;
         Shoot(direction);
     }
 
-    public void Shoot(Vector2 direction) {
+    public void Shoot(Vector2 direction)
+    {
         rb.velocity = direction * config.Speed;
     }
 
-    void Update () {
+    void Update()
+    {
         lifeTimer += Time.deltaTime;
-        if (lifeTimer > config.LifeTime) {
+        if (lifeTimer > config.LifeTime)
+        {
             Destroy(gameObject);
         }
     }
 
-    void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Enemy") {
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(config.Damage);
+        }
+        else if (collision.gameObject.tag == "Player")
+        {
+            PlayerCharacter player = collision.gameObject.GetComponent<PlayerCharacter>();
+            player.TakeDamage(config.Damage);
         }
         Destroy(gameObject);
     }
