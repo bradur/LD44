@@ -12,7 +12,10 @@ public enum SoundType
     C4Activate,
     C4Explosion,
     PistolShot,
-    ShotgunShot
+    ShotgunShot,
+    PlayerHit,
+    EnemyHit,
+    SwingBat
 }
 
 public class SoundManager : MonoBehaviour

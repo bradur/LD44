@@ -120,9 +120,7 @@ public class GameManager : MonoBehaviour
 
     public void KillEnemy(ProjectileConfig projectile)
     {
-        Debug.Log(string.Format("Enemy was killed by {0}", projectile.Name));
         numberOfEnemies -= 1;
-        Debug.Log("Number Going down: "+ numberOfEnemies);
         if (numberOfEnemies <= 0)
         {
             inGame = false;

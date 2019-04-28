@@ -49,6 +49,7 @@ public class Projectile : MonoBehaviour
             transform.SetParent(origin);
             transform.rotation = origin.rotation;
             myDirection = direction;
+            SoundManager.main.PlaySound(SoundType.SwingBat);
         }
         else
         {

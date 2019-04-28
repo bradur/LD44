@@ -68,6 +68,7 @@ public class Enemy : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+        SoundManager.main.PlaySound(SoundType.EnemyHit);
     }
 
     public void TakeDamage(ProjectileConfig projectileConfig) {
@@ -81,6 +82,7 @@ public class Enemy : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+        SoundManager.main.PlaySound(SoundType.EnemyHit);
     }
 
     void Update() {

@@ -39,6 +39,7 @@ public class PlayerCharacter : MonoBehaviour
     public void TakeDamage(int damage) {
         health -= damage;
         InventoryManager.main.UpdateHealth(health);
+        SoundManager.main.PlaySound(SoundType.PlayerHit);
         if (health <= 0) {
             Die();
         }
