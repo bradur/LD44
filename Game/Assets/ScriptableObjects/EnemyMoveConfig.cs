@@ -42,6 +42,11 @@ public class EnemyMoveConfig : ScriptableObject
     private float maxFollowRange = 4f;
     public float MaxFollowRange { get { return maxFollowRange; } }
 
+
+    [SerializeField]
+    private float closeEnoughDistance = 4f;
+    public float CloseEnoughDistance { get { return closeEnoughDistance; } }
+
     [SerializeField]
     private float courseCorrectionInterval = 0.2f;
     public float CourseCorrectionInterval { get { return courseCorrectionInterval; } }

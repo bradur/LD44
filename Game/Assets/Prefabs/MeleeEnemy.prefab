@@ -150,7 +150,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   moveAround: {fileID: 2355599874581684691}
   enemy: {fileID: 5085962530858683092}
-  moveConfig: {fileID: 11400000, guid: 08494772069b0494e8fefa85b158e494, type: 2}
+  moveConfig: {fileID: 11400000, guid: 5c3d26805f9a2f544a41300434466ce3, type: 2}
   rb: {fileID: 2355599874581684690}
   rotator: {fileID: 2355599874581684689}
   animator: {fileID: 7651916429276870204}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff6264035d59e24d862d2a93376aeae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveConfig: {fileID: 11400000, guid: 08494772069b0494e8fefa85b158e494, type: 2}
+  moveConfig: {fileID: 11400000, guid: 5c3d26805f9a2f544a41300434466ce3, type: 2}
   animator: {fileID: 7651916429276870204}
   rb: {fileID: 2355599874581684690}
   rotator: {fileID: 2355599874581684689}
@@ -224,7 +224,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2355599874581684703}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 19599f972c46f1040b18c4e754789663, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

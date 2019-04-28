@@ -45,6 +45,8 @@ public class FollowPlayer : MonoBehaviour
     private float pushBackInterval = 0.2f;
     private bool pushBack = false;
 
+    private bool isMoving = false;
+
     void Start()
     {
         playerPosition = ConfigManager.main.GetConfig("PlayerPosition") as PlayerPosition;
@@ -53,10 +55,25 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         checkTimer += Time.deltaTime;
+        if (pushBack) {
+            pushBackTimer += Time.deltaTime;
+            if (pushBackTimer > pushBackInterval) {
+                pushBackTimer = 0f;
+                pushBack = false;
+            }
+        }
         if (!pushBack && checkTimer > moveConfig.CheckInterval)
         {
-            bool playerIsWithinRange = Vector2.Distance(transform.position, playerPosition.playerPosition) < moveConfig.MaxFollowRange;
-            if (!isFollowing && playerIsWithinRange && CanSeePlayer())
+            float distance = Vector2.Distance(transform.position, playerPosition.playerPosition);
+            bool playerIsWithinRange = distance < moveConfig.MaxFollowRange;
+            bool playerCloseEnough = distance <= moveConfig.CloseEnoughDistance;
+            bool playerIsSeen = CanSeePlayer();
+            if (playerIsSeen && playerIsWithinRange) {
+                enemy.EnableShooting();
+            } else {
+                enemy.DisableShooting();
+            }
+            if (!isFollowing && playerIsWithinRange && playerIsSeen)
             {
                 StartFollowing();
             }
@@ -64,14 +81,12 @@ public class FollowPlayer : MonoBehaviour
             {
                 StopFollowing();
             }
-            checkTimer = 0f;
-        }
-        if (pushBack) {
-            pushBackTimer += Time.deltaTime;
-            if (pushBackTimer > pushBackInterval) {
-                pushBackTimer = 0f;
-                pushBack = false;
+            if (isMoving && isFollowing && playerCloseEnough) {
+                StopMoving();
+            } else if (!isMoving && isFollowing) {
+                StartMoving();
             }
+            checkTimer = 0f;
         }
 
         if (isFollowing)
@@ -87,19 +102,27 @@ public class FollowPlayer : MonoBehaviour
 
     private void StartFollowing()
     {
-        enemy.EnableShooting();
         moveAround.Reset();
         moveAround.enabled = false;
         isFollowing = true;
         animator.SetBool("Walking", true);
+        StartMoving();
+    }
+
+    private void StopMoving() {
+        isMoving = false;
+    }
+
+    private void StartMoving() {
+        isMoving = true;
     }
 
     private void StopFollowing()
     {
-        enemy.DisableShooting();
         animator.SetBool("Walking", false);
         moveAround.enabled = true;
         isFollowing = false;
+        StopMoving();
     }
 
     public void GetPushed() {
@@ -133,7 +156,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isFollowing)
+        if (isFollowing && isMoving)
         {
             rb.velocity = velocity;
         }

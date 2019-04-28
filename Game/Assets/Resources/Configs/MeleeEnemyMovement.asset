@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b4403816ed07544fa80d3368e89cf84, type: 3}
-  m_Name: BasicEnemyMovement
+  m_Name: MeleeEnemyMovement
   m_EditorClassIdentifier: 
-  moveIntervalRange: {x: 0, y: 10}
+  moveIntervalRange: {x: 0, y: 3}
   moveDurationRange: {x: 1, y: 4}
-  moveVelocityRange: {x: 1, y: 1.5}
+  moveVelocityRange: {x: 1, y: 3}
   rotationSpeed: 500
-  checkInterval: 0.5
-  playerFollowSpeed: 5
+  checkInterval: 0.2
+  playerFollowSpeed: 6
   maxFollowRange: 8
-  closeEnoughDistance: 4
+  closeEnoughDistance: 1.25
   courseCorrectionInterval: 0.2

@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour {
 
     public void EnableShooting()
     {
-        Debug.Log("Shooting enabled.");
+
         shootingEnabled = true;
     }
 
@@ -58,7 +58,6 @@ public class Enemy : MonoBehaviour {
         health -= damage;
         followPlayer.GetPushed();
         rb.AddForce(pushBack * 10f, ForceMode.Impulse);
-        Debug.Log(pushBack);
         if (health <= 0) {
             Destroy(gameObject);
         }
