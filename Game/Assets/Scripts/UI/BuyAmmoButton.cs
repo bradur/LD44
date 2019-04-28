@@ -68,18 +68,29 @@ public class BuyAmmoButton : MonoBehaviour
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         entered = true;
+        if (!isDisabled) {
+            UIInventoryManager.main.UsePointer();
+        }
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         entered = false;
+        UIInventoryManager.main.UseCursor();
     }
 
     void Update() {
         ammoTimer += Time.deltaTime;
-        if (ammoTimer > ammoBuyInterval && entered == true && uiShopItem != null && Input.GetMouseButton(0)) {
-            uiShopItem.BuyAmmo();
-            ammoTimer = 0f;
+        if (ammoTimer > ammoBuyInterval) {
+            if (entered == true && uiShopItem != null ) {
+                if (isDisabled) {
+                    UIInventoryManager.main.UseCursor();
+                }
+                if (Input.GetMouseButton(0)) {
+                    uiShopItem.BuyAmmo();
+                    ammoTimer = 0f;
+                }
+            }
         }
     }
 

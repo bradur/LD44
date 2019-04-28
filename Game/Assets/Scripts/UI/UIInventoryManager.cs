@@ -7,11 +7,13 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class UIInventoryManager : MonoBehaviour {
+public class UIInventoryManager : MonoBehaviour
+{
 
     public static UIInventoryManager main;
 
-    void Awake() {
+    void Awake()
+    {
         main = this;
     }
     GameConfig config;
@@ -29,38 +31,64 @@ public class UIInventoryManager : MonoBehaviour {
 
     private UIInventoryItem selectedItem = null;
 
-    private void Start() {
+    [SerializeField]
+    private UIMouseCursor uIMouseCursor;
+
+    public void UseCrosshair()
+    {
+        uIMouseCursor.UseCrosshair();
+    }
+    public void UseCursor()
+    {
+        uIMouseCursor.UseCursor();
+    }
+    public void UsePointer()
+    {
+        uIMouseCursor.UsePointer();
+    }
+
+    private void Start()
+    {
         config = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
     }
 
-    public void SetHealth(int health) {
+    public void SetHealth(int health)
+    {
         txtHealth.text = health.ToString();
     }
 
-    public void AddItem(InventoryItem item) {
+    public void AddItem(InventoryItem item)
+    {
         UIInventoryItem uiItem = Instantiate(config.UIInventoryItemPrefab);
         uiItem.Init(item);
         items.Add(uiItem);
         uiItem.SetParent(inventoryItemParent);
     }
 
-    public void ClearItems() {
-        foreach(UIInventoryItem uiItem in items) {
+    public void ClearItems()
+    {
+        foreach (UIInventoryItem uiItem in items)
+        {
             Destroy(uiItem);
         }
         items.Clear();
     }
 
-    public void SelectUIItem(UIInventoryItem item) {
+    public void SelectUIItem(UIInventoryItem item)
+    {
         item.SetParent(currentItemParent);
         selectedItem = item;
     }
 
-    public void SelectItem(InventoryItem item) {
+    public void SelectItem(InventoryItem item)
+    {
 
-        foreach(UIInventoryItem uiItem in items) {
-            if (uiItem.Equals(item)) {
-                if (selectedItem != null) {
+        foreach (UIInventoryItem uiItem in items)
+        {
+            if (uiItem.Equals(item))
+            {
+                if (selectedItem != null)
+                {
                     selectedItem.SetParent(inventoryItemParent);
                 }
                 SelectUIItem(uiItem);
@@ -68,9 +96,12 @@ public class UIInventoryManager : MonoBehaviour {
         }
     }
 
-    public void UpdateAmmo(InventoryItem item) {
-        foreach(UIInventoryItem uiItem in items) {
-            if (uiItem.Equals(item)) {
+    public void UpdateAmmo(InventoryItem item)
+    {
+        foreach (UIInventoryItem uiItem in items)
+        {
+            if (uiItem.Equals(item))
+            {
                 uiItem.SetAmmo(item.Ammo);
             }
         }

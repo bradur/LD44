@@ -64,10 +64,14 @@ public class BuyButton : MonoBehaviour
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
+        if (!isDisabled) {
+            UIInventoryManager.main.UsePointer();
+        }
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
+        UIInventoryManager.main.UseCursor();
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)

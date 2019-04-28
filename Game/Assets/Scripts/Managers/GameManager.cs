@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     public Transform WorldParent { get { return worldParent; } }
     GameConfig config;
 
+    void Start() {
+        Cursor.visible = false;
+    }
+
     public void StartNextLevel()
     {
         if (config == null)
@@ -41,6 +45,7 @@ public class GameManager : MonoBehaviour
             }
         }
         tiledMap.Initialize();
+        UIInventoryManager.main.UseCrosshair();
         InventoryManager.main.ProcessPurchasedItems();
         InventoryManager.main.UpdateHealth();
         InventoryManager.main.SelectAutomatically();

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e279cadb1f5f275469909c5acfaf700f, type: 3}
   m_Name: BasicEnemy
   m_EditorClassIdentifier: 
-  health: 5
+  health: 10
   configName: BasicEnemy
   weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}

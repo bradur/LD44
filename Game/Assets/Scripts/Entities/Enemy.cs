@@ -64,6 +64,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public void TakeDamage(int damage) {
+        followPlayer.GetHit();
         health -= damage;
         if (health <= 0) {
             Destroy(gameObject);
