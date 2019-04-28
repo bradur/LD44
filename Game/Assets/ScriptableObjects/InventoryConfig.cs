@@ -20,6 +20,10 @@ public class InventoryConfig : ScriptableObject
     private List<InventoryItem> availableItems;
     public List<InventoryItem> AvailableItems { get { return availableItems; } }
 
+    private List<InventoryItem> unlockedItems = new List<InventoryItem>();
+
+    private List<InventoryItem> lockedItems;
+
     [SerializeField]
     private List<InventoryItem> initialItems;
 
@@ -27,9 +31,22 @@ public class InventoryConfig : ScriptableObject
 
     private InventoryItem selectedWeapon;
 
+    public void UnlockItem(InventoryItem item) {
+        foreach(InventoryItem unlockedItem in unlockedItems) {
+            if (unlockedItem.WeaponConfig == item.WeaponConfig) {
+                return;
+            }
+        }
+        InventoryItem newItem = new InventoryItem(item.WeaponConfig, item.Ammo, item.UnlimitedAmmo, item.SelectOrder);
+        unlockedItems.Add(newItem);
+    } 
 
-    public void Init()
+    public void Init(bool gameStart)
     {
+        if (gameStart)
+        {
+            unlockedItems.Clear();
+        }
         currency = initialCurrency;
         ClearItems();
         foreach (InventoryItem item in initialItems)
@@ -38,12 +55,12 @@ public class InventoryConfig : ScriptableObject
             InventoryItem newItem = new InventoryItem(item.WeaponConfig, item.Ammo, item.UnlimitedAmmo, item.SelectOrder);
             availableItems.Add(newItem);
         }
-    }
-
-    public void AddToAvailableItems(InventoryItem item)
-    {
-        InventoryItem newItem = new InventoryItem(item.WeaponConfig, item.Ammo, item.UnlimitedAmmo, item.SelectOrder);
-        availableItems.Add(newItem);
+        foreach (InventoryItem item in unlockedItems)
+        {
+            item.Purchased = false;
+            InventoryItem newItem = new InventoryItem(item.WeaponConfig, item.Ammo, item.UnlimitedAmmo, item.SelectOrder);
+            availableItems.Add(newItem);
+        }
     }
 
     public void ClearItems()

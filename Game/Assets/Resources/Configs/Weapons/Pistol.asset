@@ -17,5 +17,5 @@ MonoBehaviour:
   configName: Pistol
   keyCode: 50
   basePrice: 30
-  fireInterval: 0.5
+  fireInterval: 0.75
   projectile: {fileID: 11400000, guid: ddeaf01316a233942babcd9ecf1df0d9, type: 2}

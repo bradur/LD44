@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject wellDoneScreen;
 
+    [SerializeField]
+    private Text txtNicelyDone;
 
     private Transform worldParent;
 
@@ -79,8 +82,12 @@ public class GameManager : MonoBehaviour
         if (levelEnd)
         {
             wellDoneScreen.SetActive(false);
+            InventoryManager.main.UnlockItem(config.CurrentLevel.UnlocksItem);
             ShowShop();
-            UIShop.main.ShowNextLevelButton();
+            if (config.CurrentLevel.NextLevel != null)
+            {
+                UIShop.main.ShowNextLevelButton();
+            }
         }
         else
         {
@@ -125,6 +132,9 @@ public class GameManager : MonoBehaviour
         {
             inGame = false;
             wellDoneScreen.SetActive(true);
+            if (config.CurrentLevel.NextLevel == null) {
+                txtNicelyDone.text = "The end!";
+            }
             /*
             InventoryManager.main.ResetHealth();
             InventoryManager.main.ResetPurchasedItems();
@@ -138,7 +148,6 @@ public class GameManager : MonoBehaviour
     public void SetNumberOfEnemies(int number)
     {
         numberOfEnemies = number;
-        Debug.Log("Number: "+ numberOfEnemies);
     }
 
     public void StartCurrentLevel()

@@ -15,3 +15,9 @@ MonoBehaviour:
   levelFile: {fileID: 4900000, guid: fc9f982b35c83134c80622e2d471ffbe, type: 3}
   configName: Back Alley
   nextLevel: {fileID: 11400000, guid: b5f1f54158806394c84614b379927c05, type: 2}
+  unlocksItem:
+    purchased: 0
+    weaponConfig: {fileID: 11400000, guid: 7a228234225a57a4cac7fdce4269ce09, type: 2}
+    selectOrder: 3
+    ammo: 2
+    unlimitedAmmo: 0

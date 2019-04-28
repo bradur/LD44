@@ -9,6 +9,8 @@ public class InventoryManager : MonoBehaviour {
 
     public static InventoryManager main;
 
+    bool gameStart = true;
+
     void Awake() {
         main = this;
     }
@@ -22,12 +24,19 @@ public class InventoryManager : MonoBehaviour {
     public void Init() {
         gameConfig = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
         config = ConfigManager.main.GetConfig("InventoryConfig") as InventoryConfig;
-        config.Init();
+        config.Init(gameStart);
         UIShop.main.DisplayItems(config);
+        gameStart = false;
     }
 
     public bool PurchasesHaveBeenMade() {
         return config.PurchasedItems.Count > 0;
+    }
+
+    public void UnlockItem(InventoryItem item) {
+        if (item.WeaponConfig != null){
+            config.UnlockItem(item);
+        }
     }
 
     public void ProcessPurchasedItems() {

@@ -18,4 +18,8 @@ public class LevelConfig : ScriptableObject
     private LevelConfig nextLevel;
     public LevelConfig NextLevel { get { return nextLevel; } }
 
+    [SerializeField]
+    private InventoryItem unlocksItem;
+    public InventoryItem UnlocksItem { get { return unlocksItem; } }
+
 }

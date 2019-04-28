@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87af0237edf964b40be1482ddf646fe4, type: 3}
-  m_Name: ParkingLot
+  m_Name: Yard
   m_EditorClassIdentifier: 
-  levelFile: {fileID: 4900000, guid: a60c710ee77c0c9469e5d366b270ad4d, type: 3}
-  configName: Parking Lot
-  nextLevel: {fileID: 11400000, guid: badd598556cb0e7429c3793ebc28a138, type: 2}
+  levelFile: {fileID: 4900000, guid: da606151a60119540a4fb1272dfede7f, type: 3}
+  configName: Yard
+  nextLevel: {fileID: 11400000, guid: 62057c36a35e03840bd06e514bd55b99, type: 2}
   unlocksItem:
     purchased: 0
-    weaponConfig: {fileID: 11400000, guid: c22867d67c6ae924d8ec3715d0f54a1a, type: 2}
-    selectOrder: 4
-    ammo: 1
+    weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}
+    selectOrder: 2
+    ammo: 5
     unlimitedAmmo: 0
