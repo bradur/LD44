@@ -50,6 +50,15 @@ public class InventoryManager : MonoBehaviour {
         return false;
     }
 
+    public void SelectAutomatically() {
+        InventoryItem firstItem = null;
+        foreach(InventoryItem item in config.PurchasedItems) {
+            if (firstItem == null || firstItem.SelectOrder > item.SelectOrder) {
+                firstItem = item;
+            }
+        }
+        Select(firstItem);
+    }
 
     public void UpdateHealth(int newHealth) {
         config.Currency = newHealth;

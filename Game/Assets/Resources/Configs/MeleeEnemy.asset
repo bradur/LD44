@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e279cadb1f5f275469909c5acfaf700f, type: 3}
-  m_Name: BasicEnemy
+  m_Name: MeleeEnemy
   m_EditorClassIdentifier: 
-  health: 5
-  configName: BasicEnemy
-  weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}
+  health: 10
+  configName: MeleeEnemy
+  weaponConfig: {fileID: 11400000, guid: 1c0f1e4bcbca3df4385209c205c0e774, type: 2}

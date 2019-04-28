@@ -34,6 +34,9 @@ public class UIShopItem : MonoBehaviour {
     [SerializeField]
     private GameObject buyButtonContainer;
 
+    [SerializeField]
+    private Text txtDamage;
+
     public void Init(InventoryItem item) {
         txtName.text = item.WeaponConfig.Name;
         imgIcon.sprite = item.WeaponConfig.PreviewPicture;
@@ -47,6 +50,7 @@ public class UIShopItem : MonoBehaviour {
             buyAmmoButton.gameObject.SetActive(false);
             txtAmmoCount.text = "";
         }
+        txtDamage.text = item.WeaponConfig.Projectile.Damage.ToString();
         buyButton.Init(this, item);
         inventoryItem = item;
     }

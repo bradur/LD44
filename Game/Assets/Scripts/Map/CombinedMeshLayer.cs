@@ -17,11 +17,12 @@ public class CombinedMeshLayer : MonoBehaviour {
 
     private MeshCollider meshCollider;
 
-    public void Initialize(string layerName) {
+    public void Initialize(string layerName, int mapHeight) {
         meshFilters = new List<MeshFilter>();
         meshFilter = GetComponent<MeshFilter>();
         meshCollider = GetComponent<MeshCollider>();
         name = layerName;
+        transform.position = new Vector3(transform.position.x, mapHeight, transform.position.z);
     }
 
     void Start () {

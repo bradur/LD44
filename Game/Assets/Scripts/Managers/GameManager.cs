@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         tiledMap.Initialize();
         InventoryManager.main.ProcessPurchasedItems();
         InventoryManager.main.UpdateHealth();
+        InventoryManager.main.SelectAutomatically();
     }
 
 }

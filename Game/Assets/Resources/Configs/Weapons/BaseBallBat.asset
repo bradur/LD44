@@ -17,5 +17,5 @@ MonoBehaviour:
   configName: Baseball bat
   keyCode: 49
   basePrice: 5
-  fireInterval: 0.3
+  fireInterval: 0.6
   projectile: {fileID: 11400000, guid: 09a5f5038f3c8e446858d28df132174d, type: 2}

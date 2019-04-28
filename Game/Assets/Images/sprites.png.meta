@@ -41,6 +41,21 @@ TextureImporter:
   - first:
       213: -7347884226184020333
     second: baseBallBatRealWorld
+  - first:
+      213: 7869737316896374285
+    second: damage
+  - first:
+      213: 7513756674751354451
+    second: Melee1
+  - first:
+      213: 4254977302122647565
+    second: Melee2
+  - first:
+      213: -1053552312316064704
+    second: Melee3
+  - first:
+      213: 9133393890527562743
+    second: Melee4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -402,6 +417,111 @@ TextureImporter:
       bones: []
       spriteID: d1b7a50d08d109e46a33d2f423567a2f
       internalID: -7347884226184020333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: damage
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e755e0363d587b49b6fcaf073836206
+      internalID: 7869737316896374285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Melee1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca5a00bec06c0c429aee70c475e1786
+      internalID: 7513756674751354451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Melee2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddb3eabd79f1b7049891ad6c5836bce4
+      internalID: 4254977302122647565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Melee3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e2c56ea3ad704c46adabc482e0d7911
+      internalID: -1053552312316064704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Melee4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9010d9d088e6d54d91376c3f67f36a1
+      internalID: 9133393890527562743
       vertices: []
       indices: 
       edges: []

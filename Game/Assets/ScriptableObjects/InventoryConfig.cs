@@ -35,14 +35,14 @@ public class InventoryConfig : ScriptableObject
         foreach (InventoryItem item in initialItems)
         {
             item.Purchased = false;
-            InventoryItem newItem = new InventoryItem(item.WeaponConfig, item.Ammo, item.UnlimitedAmmo);
+            InventoryItem newItem = new InventoryItem(item.WeaponConfig, item.Ammo, item.UnlimitedAmmo, item.SelectOrder);
             availableItems.Add(newItem);
         }
     }
 
     public void AddToAvailableItems(InventoryItem item)
     {
-        InventoryItem newItem = new InventoryItem(item.WeaponConfig, item.Ammo, item.UnlimitedAmmo);
+        InventoryItem newItem = new InventoryItem(item.WeaponConfig, item.Ammo, item.UnlimitedAmmo, item.SelectOrder);
         availableItems.Add(newItem);
     }
 
@@ -108,11 +108,12 @@ public class InventoryConfig : ScriptableObject
 [System.Serializable]
 public class InventoryItem : System.Object
 {
-    public InventoryItem(WeaponConfig weaponConfig, int ammoCount, bool unlimitedAmmo)
+    public InventoryItem(WeaponConfig weaponConfig, int ammoCount, bool unlimitedAmmo, int selectOrder)
     {
         this.weaponConfig = weaponConfig;
         ammo = ammoCount;
         this.unlimitedAmmo = unlimitedAmmo;
+        this.selectOrder = selectOrder;
     }
 
     [SerializeField]
@@ -123,6 +124,10 @@ public class InventoryItem : System.Object
     private WeaponConfig weaponConfig;
 
     public WeaponConfig WeaponConfig { get { return weaponConfig; } }
+
+    [SerializeField]
+    private int selectOrder = 0;
+    public int SelectOrder { get { return selectOrder; } }
 
     private Weapon weapon;
     public Weapon Weapon { get { return weapon; } set { weapon = value; } }

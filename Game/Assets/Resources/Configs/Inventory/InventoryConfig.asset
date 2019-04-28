@@ -13,22 +13,36 @@ MonoBehaviour:
   m_Name: InventoryConfig
   m_EditorClassIdentifier: 
   initialCurrency: 100
-  purchasedItems: []
-  availableItems:
-  - purchased: 0
+  purchasedItems:
+  - purchased: 1
     weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}
-    ammo: 5
+    selectOrder: 0
+    ammo: 32
     unlimitedAmmo: 0
-  - purchased: 0
+  - purchased: 1
     weaponConfig: {fileID: 11400000, guid: 1c0f1e4bcbca3df4385209c205c0e774, type: 2}
+    selectOrder: 0
     ammo: -1
+    unlimitedAmmo: 1
+  availableItems:
+  - purchased: 1
+    weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}
+    selectOrder: 0
+    ammo: 32
     unlimitedAmmo: 0
+  - purchased: 1
+    weaponConfig: {fileID: 11400000, guid: 1c0f1e4bcbca3df4385209c205c0e774, type: 2}
+    selectOrder: 0
+    ammo: -1
+    unlimitedAmmo: 1
   initialItems:
   - purchased: 0
     weaponConfig: {fileID: 11400000, guid: 520390b59c0aa6a488f83c1c78b16291, type: 2}
+    selectOrder: 2
     ammo: 5
     unlimitedAmmo: 0
   - purchased: 0
     weaponConfig: {fileID: 11400000, guid: 1c0f1e4bcbca3df4385209c205c0e774, type: 2}
+    selectOrder: 1
     ammo: -1
     unlimitedAmmo: 1

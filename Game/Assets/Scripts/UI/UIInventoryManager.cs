@@ -27,6 +27,8 @@ public class UIInventoryManager : MonoBehaviour {
 
     private List<UIInventoryItem> items = new List<UIInventoryItem>();
 
+    private UIInventoryItem selectedItem = null;
+
     private void Start() {
         config = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
     }
@@ -49,10 +51,19 @@ public class UIInventoryManager : MonoBehaviour {
         items.Clear();
     }
 
+    public void SelectUIItem(UIInventoryItem item) {
+        item.SetParent(currentItemParent);
+        selectedItem = item;
+    }
+
     public void SelectItem(InventoryItem item) {
+
         foreach(UIInventoryItem uiItem in items) {
             if (uiItem.Equals(item)) {
-                uiItem.SetParent(currentItemParent);
+                if (selectedItem != null) {
+                    selectedItem.SetParent(inventoryItemParent);
+                }
+                SelectUIItem(uiItem);
             }
         }
     }

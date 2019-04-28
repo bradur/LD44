@@ -68,7 +68,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4988955388142980130, guid: ecc769bd5d74b38488895fd80fbd990c,
+  m_Sprite: {fileID: 7513756674751354451, guid: ecc769bd5d74b38488895fd80fbd990c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -94,10 +94,10 @@ GameObject:
   - component: {fileID: 2355599874581684691}
   - component: {fileID: 2355599874581684689}
   - component: {fileID: 2355599874581684690}
-  - component: {fileID: 2355599874581684700}
-  - component: {fileID: 8532670301355553026}
+  - component: {fileID: 7651916429276870204}
+  - component: {fileID: 7424466562510962216}
   m_Layer: 11
-  m_Name: Enemy
+  m_Name: MeleeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab760fd5135448d4f92605bf0e812051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 1993b197eea13fd4194e09b62b63b1bc, type: 2}
+  config: {fileID: 11400000, guid: c4590b0b616e37a46914651fec952c67, type: 2}
   followPlayer: {fileID: 2355599874581684694}
   rb: {fileID: 2355599874581684690}
 --- !u!114 &2355599874581684694
@@ -153,7 +153,7 @@ MonoBehaviour:
   moveConfig: {fileID: 11400000, guid: 08494772069b0494e8fefa85b158e494, type: 2}
   rb: {fileID: 2355599874581684690}
   rotator: {fileID: 2355599874581684689}
-  animator: {fileID: 2355599874581684700}
+  animator: {fileID: 7651916429276870204}
 --- !u!114 &2355599874581684691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveConfig: {fileID: 11400000, guid: 08494772069b0494e8fefa85b158e494, type: 2}
-  animator: {fileID: 2355599874581684700}
+  animator: {fileID: 7651916429276870204}
   rb: {fileID: 2355599874581684690}
   rotator: {fileID: 2355599874581684689}
 --- !u!114 &2355599874581684689
@@ -198,7 +198,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!95 &2355599874581684700
+--- !u!95 &7651916429276870204
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ Animator:
   m_GameObject: {fileID: 2355599874581684703}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 962f462cee992f343ab2388c9f99f108, type: 2}
+  m_Controller: {fileID: 9100000, guid: 80efbb6f8749dff4ca0e3b477180092d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -217,7 +217,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!135 &8532670301355553026
+--- !u!135 &7424466562510962216
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,5 +228,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.37
+  m_Radius: 0.35
   m_Center: {x: 0, y: 0, z: 0}

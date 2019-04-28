@@ -18,11 +18,14 @@ public class Projectile : MonoBehaviour
 
     private float lifeTimer = 0f;
 
+    Vector2 myDirection;
+
     public void Init(ProjectileConfig projectileConfig, Vector2 direction, Vector2 newPosition, Transform origin)
     {
         config = projectileConfig;
         spriteRenderer.sprite = config.RealWorldSprite;
         transform.position = newPosition;
+        myDirection = direction;
 
         if (projectileConfig.Melee) {
             transform.SetParent(origin);
@@ -51,7 +54,11 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            enemy.TakeDamage(config.Damage);
+            if (config.PushForce > 0) {
+                enemy.TakeDamage(config.Damage, myDirection * config.PushForce);
+            } else {
+                enemy.TakeDamage(config.Damage);
+            }
         }
         else if (collision.gameObject.tag == "Player")
         {

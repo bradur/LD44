@@ -44,4 +44,8 @@ public class ProjectileConfig : ScriptableObject
     private float lifeTime = 5f;
     public float LifeTime { get { return lifeTime; } }
 
+    [SerializeField]
+    private float pushForce = 0f;
+    public float PushForce { get { return pushForce; } }
+
 }

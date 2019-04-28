@@ -21,6 +21,7 @@ MonoBehaviour:
   basePrice: 0
   melee: 1
   configName: BatSwing
-  damage: 1
+  damage: 3
   speed: 0
   lifeTime: 0.3
+  pushForce: 100

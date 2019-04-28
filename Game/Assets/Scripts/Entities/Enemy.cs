@@ -22,6 +22,12 @@ public class Enemy : MonoBehaviour {
     private Weapon weapon;
 
     private WeaponConfig weaponConfig;
+    [SerializeField]
+    private FollowPlayer followPlayer;
+
+
+    [SerializeField]
+    private Rigidbody rb;
 
     public void Init() {
         gameConfig = ConfigManager.main.GetConfig("GameConfig") as GameConfig;
@@ -46,6 +52,16 @@ public class Enemy : MonoBehaviour {
 
     public void Shoot(Vector2 direction, Vector2 position) {
         weapon.ShootAsEnemy(direction, position, transform);
+    }
+
+   public void TakeDamage(int damage, Vector2 pushBack) {
+        health -= damage;
+        followPlayer.GetPushed();
+        rb.AddForce(pushBack * 10f, ForceMode.Impulse);
+        Debug.Log(pushBack);
+        if (health <= 0) {
+            Destroy(gameObject);
+        }
     }
 
     public void TakeDamage(int damage) {

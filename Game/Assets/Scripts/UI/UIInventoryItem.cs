@@ -21,6 +21,9 @@ public class UIInventoryItem : MonoBehaviour {
     [SerializeField]
     private Image imgAmmoIcon;
 
+    [SerializeField]
+    private GameObject ammoContainer;
+
     private InventoryItem inventoryItem;
 
     private RectTransform rectTransform;
@@ -33,11 +36,16 @@ public class UIInventoryItem : MonoBehaviour {
         } else {
             txtAmmoCount.text = "";
             imgAmmoIcon.enabled = false;
+            ammoContainer.SetActive(false);
         }
         imgIcon.sprite = item.WeaponConfig.PreviewPicture;
         txtName.text = item.WeaponConfig.Name;
         txtKey.text = GetNiceKeycode(item.WeaponConfig.KeyCode);
         rectTransform = GetComponent<RectTransform>();
+    }
+
+    public int GetSelectOrder () {
+        return inventoryItem.SelectOrder;
     }
 
     private string GetNiceKeycode(KeyCode keyCode) {
@@ -82,7 +90,9 @@ public class UIInventoryItem : MonoBehaviour {
         rectTransform.SetParent(rt, false);
     }
     public void SetAmmo(int ammo) {
-        txtAmmoCount.text = ammo.ToString();
+        if (!inventoryItem.UnlimitedAmmo) {
+            txtAmmoCount.text = ammo.ToString();
+        }
     }
 
 }

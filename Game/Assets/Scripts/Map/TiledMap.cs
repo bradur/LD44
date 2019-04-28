@@ -40,16 +40,16 @@ public class TiledMap : MonoBehaviour
             }
             else if (layerType == "Wall")
             {
-                CombinedMeshLayer combinedMeshLayer = SpawnWallLayer(layer);
+                CombinedMeshLayer combinedMeshLayer = SpawnWallLayer(layer, mapHeight);
             }
         }
     }
 
-    private CombinedMeshLayer SpawnWallLayer(TmxLayer layer)
+    private CombinedMeshLayer SpawnWallLayer(TmxLayer layer, int mapHeight)
     {
         GameObject wallPrefab = gameConfig.WallPrefab;
         CombinedMeshLayer meshLayer = Instantiate(gameConfig.CombinedMeshLayerPrefab);
-        meshLayer.Initialize(layer.Name);
+        meshLayer.Initialize(layer.Name, mapHeight);
         Transform wallContainer = GetContainer("Walls");
         meshLayer.transform.SetParent(wallContainer);
         foreach (TmxLayerTile tile in layer.Tiles)
